@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://dkm7smndni26"]
+
+[ext_resource type="Theme" uid="uid://th34pxa0mcnb" path="res://ui-theme.tres" id="1_iotk1"]
+[ext_resource type="Texture2D" uid="uid://d02ftrb67k3ei" path="res://tv-asset.png" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://dot5lmdo2hv7i" path="res://ParallaxMouseDrift.gd" id="3_jix8l"]
+[ext_resource type="Script" uid="uid://dewyjvsuiy728" path="res://ScreenGlow.gd" id="4_glbon"]
+[ext_resource type="Script" uid="uid://cgp36vre1usrp" path="res://MatrixRain.gd" id="4_jix8l"]
+[ext_resource type="Script" uid="uid://chh0b7mslwu8j" path="res://TitleLabel.gd" id="6_nlkkf"]
+[ext_resource type="Script" uid="uid://d3glviu5qlt3o" path="res://CRTAudio.gd" id="6_qe12f"]
+
+[sub_resource type="Gradient" id="Gradient_glbon"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nlkkf"]
+gradient = SubResource("Gradient_glbon")
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_glbon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8g3n"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5v2v"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iotk1"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="inGameUI" type="Control" unique_id=1482020595]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = ExtResource("1_iotk1")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1591780735]
+modulate = Color(0.43489954, 0.5632987, 0.34353408, 0.99607843)
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_fu7sn")
+expand_mode = 1
+script = ExtResource("3_jix8l")
+
+[node name="PointLight2D" type="PointLight2D" parent="TextureRect" unique_id=2129849484]
+texture_filter = 1
+position = Vector2(319.5, 180.5)
+scale = Vector2(10.388963, 5.6349735)
+texture = SubResource("GradientTexture2D_nlkkf")
+texture_scale = 0.94
+script = ExtResource("4_glbon")
+base_energy = 0.8
+pulse_speed = 1.0
+pulse_amount = 0.1
+
+[node name="Matrixrain" type="Node2D" parent="." unique_id=1761663928]
+script = ExtResource("4_jix8l")
+font_size = 9
+column_spacing = 20
+drop_speed_min = 250.0
+drop_speed_max = 250.0
+trail_length = 10
+respawn_chance = 5.0
+clip_rect = Rect2(100, 40, 430, 300)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1949616593]
+stream = SubResource("AudioStreamGenerator_glbon")
+volume_db = -28.0
+autoplay = true
+max_distance = 500.0
+script = ExtResource("6_qe12f")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=891674109]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2102233637]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=113031886]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme = ExtResource("1_iotk1")
+text = "THE SPIRE"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_nlkkf")
+glow_color = Color(0.16796014, 0.43860933, 0.23559114, 1)
+flicker_speed = 3.4
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1579255275]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_iotk1")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_g8g3n")
+text = "PLAY"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1156935698]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_iotk1")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j5v2v")
+text = "SETTINGS"
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2131501579]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_iotk1")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 0.99607843)
+theme_override_styles/normal = SubResource("StyleBoxFlat_iotk1")
+text = "QUIT"
