@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dcvalrhmxecov"
+path="res://.godot/imported/EuropaIce Extended.ogg-c933cfe7ab10dd0462b7d46299922564.oggvorbisstr"
+
+[deps]
+
+source_file="res://UI_asset/music/EuropaIce Extended.ogg"
+dest_files=["res://.godot/imported/EuropaIce Extended.ogg-c933cfe7ab10dd0462b7d46299922564.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

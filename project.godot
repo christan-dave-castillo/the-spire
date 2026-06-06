@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="TheSpire"
-run/main_scene="res://main_menu.tscn"
+run/main_scene="res://inGameUI.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Music="*uid://bsudwd36333fo"
+GameManager="*uid://1kw5qkelamfl"
 
 [display]
 
