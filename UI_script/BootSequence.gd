@@ -34,7 +34,7 @@ func _ready() -> void:
 	# Make it look like real Command Prompt
 	add_theme_color_override("default_color", Color.WHITE)
 	
-	get_parent().get_node("Matrixrain").visible = false
+	
 	get_parent().get_node("MainMenu").modulate.a = 0.0   # Start menu invisible
 	
 	_type_sequence()

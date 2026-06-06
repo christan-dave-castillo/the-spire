@@ -12,7 +12,7 @@ extends Node2D
 @export var drop_speed_max: float = 300.0
 @export var rain_opacity: float = 0.55
 @export var trail_length: int = 12
-@export var respawn_chance: float = 0.015
+@export var respawn_chance: float = 999999999999999999999999999999999999999.99
 
 ## Set this to the TV screen rectangle (in this node's local space).
 ## Example: Rect2(480, 130, 560, 360)  — x, y, width, height

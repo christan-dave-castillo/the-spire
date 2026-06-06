@@ -130,3 +130,7 @@ func unlock_day(index: int) -> void:
 	if index < STAGES.size():
 		STAGES[index]["locked"] = false
 		_update_carousel()
+
+
+func _on_play_pressed() -> void:
+	pass # Replace with function body.

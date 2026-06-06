@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://bdf1te7wuxdfj"]
+
+[ext_resource type="Texture2D" uid="uid://b0y6xs3m5bxds" path="res://Ui asset/Default/Panel/panel-015.png" id="1_fam1f"]
+
+[resource]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+texture = ExtResource("1_fam1f")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
