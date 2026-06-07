@@ -1,6 +1,7 @@
 extends Control
 
 signal stage_selected(day_index: int)
+signal back_to_main_menu
 
 const STAGES = [
 	{ "label": "Day 1", "sub": "The journey begins",         "locked": false },
@@ -27,7 +28,7 @@ func _ready() -> void:
 	_build_dots()
 	_update_carousel()
 
-	back_button.pressed.connect(_on_back_pressed)
+
 	prev_button.pressed.connect(_on_prev_pressed)
 	next_button.pressed.connect(_on_next_pressed)
 	# CenterCard is a Button so use .pressed instead of gui_input
@@ -47,11 +48,8 @@ func _on_next_pressed() -> void:
 		current_index += 1
 		_update_carousel()
 
-
-func _on_back_pressed() -> void:
-	hide()
-	get_parent().get_node("MainMenu").show()
-
+func _on_back_button_pressed() -> void:
+	back_to_main_menu.emit()
 
 # ── Center card click to play ─────────────────────────────────────────────────
 
@@ -134,3 +132,10 @@ func unlock_day(index: int) -> void:
 
 func _on_play_pressed() -> void:
 	pass # Replace with function body.
+
+func _on_settings_button_pressed() -> void:
+	GlobalVars.settings_ui.visible = true
+
+
+func _on_types_info_button_pressed() -> void:
+	GlobalVars.info_book.visible = true

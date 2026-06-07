@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ctd7kjpaltv54"
+
+[deps]
+
+files=["res://CSV/cards.energy.translation", "res://CSV/cards.card.translation", "res://CSV/cards.logic.translation", "res://CSV/cards.tooltip.translation", "res://CSV/cards.credential.translation", "res://CSV/cards.malware.translation", "res://CSV/cards.ransomware.translation", "res://CSV/cards.insider.translation", "res://CSV/cards.data.translation", "res://CSV/cards.ddos.translation", "res://CSV/cards.phishing.translation", "res://CSV/cards.web.translation", "res://CSV/cards.description.translation", "res://CSV/cards.real.translation", "res://CSV/cards.hint.translation"]
+
+source_file="res://CSV/cards.csv"
+dest_files=["res://CSV/cards.energy.translation", "res://CSV/cards.card.translation", "res://CSV/cards.logic.translation", "res://CSV/cards.tooltip.translation", "res://CSV/cards.credential.translation", "res://CSV/cards.malware.translation", "res://CSV/cards.ransomware.translation", "res://CSV/cards.insider.translation", "res://CSV/cards.data.translation", "res://CSV/cards.ddos.translation", "res://CSV/cards.phishing.translation", "res://CSV/cards.web.translation", "res://CSV/cards.description.translation", "res://CSV/cards.real.translation", "res://CSV/cards.hint.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
