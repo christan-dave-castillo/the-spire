@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://5j762l73dhs6"]
+
+[ext_resource type="Script" uid="uid://c6arxmrcw86iw" path="res://UI_asset/ShopUI.gd" id="1_bfmar"]
+[ext_resource type="Texture2D" uid="uid://b0y6xs3m5bxds" path="res://Ui asset/Default/Panel/panel-015.png" id="1_jpl2o"]
+[ext_resource type="Texture2D" uid="uid://dep7tekr3jlwf" path="res://Ui asset/icons_set/icons_128/cross.png" id="2_bfmar"]
+[ext_resource type="FontFile" uid="uid://waefw4j0xun1" path="res://UI_asset/font/Silkscreen-Regular.ttf" id="3_0h5po"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0h5po"]
+texture = ExtResource("1_jpl2o")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0, 0, 0, 0)
+
+[node name="ShopUI" type="CanvasLayer" unique_id=1287714535]
+script = ExtResource("1_bfmar")
+
+[node name="Backdrop" type="ColorRect" parent="." unique_id=1259888363]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="ShopPanel" type="PanelContainer" parent="." unique_id=389092895]
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0h5po")
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopPanel" unique_id=271273673]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopPanel/MarginContainer" unique_id=220573627]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="ShopPanel/MarginContainer/VBoxContainer" unique_id=882070987]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="ShopPanel/MarginContainer/VBoxContainer/Header" unique_id=393222497]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_0h5po")
+theme_override_font_sizes/font_size = 24
+text = "🛒  Shop"
+
+[node name="CoinsLabel" type="Label" parent="ShopPanel/MarginContainer/VBoxContainer/Header" unique_id=489949780]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "🪙 500"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="ShopPanel/MarginContainer/VBoxContainer/Header" unique_id=389512568]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+icon = ExtResource("2_bfmar")
+flat = true
+expand_icon = true
+
+[node name="Separator" type="HSeparator" parent="ShopPanel/MarginContainer/VBoxContainer" unique_id=1596025062]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPanel/MarginContainer/VBoxContainer" unique_id=1116670079]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardsGrid" type="GridContainer" parent="ShopPanel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1458589633]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3

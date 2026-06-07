@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dh647prl1c3qm"]
+
+[ext_resource type="PackedScene" uid="uid://v58uor5dtgv3" path="res://Scenes/play_ui.tscn" id="1_2shtd"]
+[ext_resource type="Texture2D" uid="uid://cmsk7vcaa6o2b" path="res://UI_asset/images/morshu_in_pig.png" id="2_io27d"]
+
+[node name="Shop" type="Node2D" unique_id=1298320226]
+
+[node name="PlayUi" parent="." unique_id=367458797 instance=ExtResource("1_2shtd")]
+metadata/_edit_lock_ = true
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1691715123]
+custom_minimum_size = Vector2(200, 0)
+offset_left = 111.0
+offset_top = 12.0
+offset_right = 311.0
+offset_bottom = 258.0
+texture_normal = ExtResource("2_io27d")
+ignore_texture_size = true
+stretch_mode = 0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d02ftrb67k3ei"
-path="res://.godot/imported/tv-asset.png-0a252259cbe21c51d96606a0e5c65d85.ctex"
+uid="uid://g11airmeed4v"
+path="res://.godot/imported/morshu.png-ba2cd8fdba159ae80b315b4233592a2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_asset/tv-asset.png"
-dest_files=["res://.godot/imported/tv-asset.png-0a252259cbe21c51d96606a0e5c65d85.ctex"]
+source_file="res://UI_asset/images/morshu.png"
+dest_files=["res://.godot/imported/morshu.png-ba2cd8fdba159ae80b315b4233592a2a.ctex"]
 
 [params]
 

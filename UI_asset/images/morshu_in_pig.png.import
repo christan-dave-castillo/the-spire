@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jjo8wqwpndsq"
-path="res://.godot/imported/713563140_1992526091387133_609481122706420311_n-1.png.png-62244a14f245b871a769eb00f6a778dd.ctex"
+uid="uid://cmsk7vcaa6o2b"
+path="res://.godot/imported/morshu_in_pig.png-2fb0f1136adf194d6d258360f76ec766.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_asset/713563140_1992526091387133_609481122706420311_n-1.png.png"
-dest_files=["res://.godot/imported/713563140_1992526091387133_609481122706420311_n-1.png.png-62244a14f245b871a769eb00f6a778dd.ctex"]
+source_file="res://UI_asset/images/morshu_in_pig.png"
+dest_files=["res://.godot/imported/morshu_in_pig.png-2fb0f1136adf194d6d258360f76ec766.ctex"]
 
 [params]
 
