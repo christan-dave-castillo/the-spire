@@ -38,7 +38,11 @@
 [ext_resource type="Script" uid="uid://dhu6x7qbfaj3w" path="res://story_intro.gd" id="31_sb88j"]
 [ext_resource type="Texture2D" uid="uid://b0y6xs3m5bxds" path="res://Ui asset/Default/Panel/panel-015.png" id="37_lekm0"]
 [ext_resource type="StyleBox" uid="uid://bdf1te7wuxdfj" path="res://ui-settings-button.tres" id="38_uwv6w"]
+[ext_resource type="Script" uid="uid://cwoukarr5hpuq" path="res://UI_script/InformationBook.gd" id="39_87p6h"]
 [ext_resource type="Texture2D" uid="uid://bsgtbdakqfuy5" path="res://UIBook.png" id="39_fpbkv"]
+[ext_resource type="Theme" uid="uid://b2gqss1x4pp7d" path="res://ui-theme-book-info.tres" id="41_b656k"]
+[ext_resource type="Texture2D" uid="uid://dep7tekr3jlwf" path="res://Ui asset/icons_set/icons_128/cross.png" id="42_78nhu"]
+[ext_resource type="FontFile" uid="uid://waefw4j0xun1" path="res://UI_asset/font/Silkscreen-Regular.ttf" id="43_kku0w"]
 
 [sub_resource type="Gradient" id="Gradient_glbon"]
 
@@ -160,6 +164,15 @@ texture_margin_left = 10.0
 texture_margin_right = 10.0
 expand_margin_left = 5.0
 expand_margin_right = 5.0
+
+[sub_resource type="Theme" id="Theme_78nhu"]
+default_font = ExtResource("5_voprr")
+default_font_size = 38
+GridContainer/constants/h_separation = 4
+GridContainer/constants/v_separation = 3
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 35
+Label/fonts/font = ExtResource("43_kku0w")
 
 [node name="inGameUI" type="Control" unique_id=1753459353]
 layout_mode = 3
@@ -797,12 +810,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 340.0
-offset_bottom = 200.0
+offset_left = -340.0
+offset_top = -185.0
+offset_right = 360.0
+offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("39_87p6h")
 
 [node name="BookUi" type="TextureRect" parent="InformationBook" unique_id=1828817239]
 custom_minimum_size = Vector2(700, 390)
@@ -813,7 +827,7 @@ expand_mode = 1
 [node name="MarginContainer" type="MarginContainer" parent="InformationBook" unique_id=1382658143]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 27
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 32
 
@@ -825,7 +839,7 @@ theme_override_constants/separation = 4
 
 [node name="CardInfo_EnemyTypes" type="TabContainer" parent="InformationBook/MarginContainer/Info_Types" unique_id=1410105170]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 4
 theme_override_constants/tab_separation = 14
 theme_override_fonts/font = ExtResource("5_voprr")
 theme_override_font_sizes/font_size = 28
@@ -841,11 +855,17 @@ theme_override_fonts/font = ExtResource("5_voprr")
 theme_override_font_sizes/font_size = 43
 metadata/_tab_index = 0
 
-[node name="GridContainer" type="GridContainer" parent="InformationBook/MarginContainer/Info_Types/CardInfo_EnemyTypes/Card Info" unique_id=1326550407]
+[node name="ScrollContainer" type="ScrollContainer" parent="InformationBook/MarginContainer/Info_Types/CardInfo_EnemyTypes/Card Info" unique_id=706884349]
 layout_mode = 0
-offset_right = 292.0
-offset_bottom = 345.0
-columns = 3
+offset_left = 8.0
+offset_top = 49.0
+offset_right = 291.0
+offset_bottom = 336.0
+horizontal_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="InformationBook/MarginContainer/Info_Types/CardInfo_EnemyTypes/Card Info/ScrollContainer" unique_id=1326550407]
+layout_mode = 2
+theme = ExtResource("41_b656k")
 
 [node name="Enemy Type" type="Button" parent="InformationBook/MarginContainer/Info_Types/CardInfo_EnemyTypes" unique_id=872476109]
 layout_mode = 2
@@ -854,24 +874,46 @@ theme_override_fonts/font = ExtResource("5_voprr")
 theme_override_font_sizes/font_size = 43
 metadata/_tab_index = 1
 
-[node name="GridContainer" type="GridContainer" parent="InformationBook/MarginContainer/Info_Types/CardInfo_EnemyTypes/Enemy Type" unique_id=372018804]
+[node name="ScrollContainer" type="ScrollContainer" parent="InformationBook/MarginContainer/Info_Types/CardInfo_EnemyTypes/Enemy Type" unique_id=1556523681]
 layout_mode = 0
-offset_right = 293.0
-offset_bottom = 346.0
-columns = 3
+offset_left = 40.0
+offset_top = 46.0
+offset_right = 292.0
+offset_bottom = 335.0
+horizontal_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="InformationBook/MarginContainer/Info_Types/CardInfo_EnemyTypes/Enemy Type/ScrollContainer" unique_id=372018804]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("41_b656k")
+
+[node name="Button" type="Button" parent="InformationBook" unique_id=1363165051]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/icon_normal_color = Color(0.89827543, 2.5990605e-06, 1.2513996e-06, 1)
+theme_override_colors/icon_pressed_color = Color(0.8980392, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.53986263, 1.0348111e-06, 2.8878452e-07, 1)
+icon = ExtResource("42_78nhu")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="InformationBook" unique_id=1582832397]
 custom_minimum_size = Vector2(330, 0)
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
+theme = SubResource("Theme_78nhu")
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 35
 
 [node name="RightSide" type="VBoxContainer" parent="InformationBook/MarginContainer2" unique_id=1000668172]
 custom_minimum_size = Vector2(280, 320)
-layout_direction = 3
+layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 8
 
@@ -881,6 +923,28 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="InformationBook/MarginContainer2/RightSide" unique_id=1889045909]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="EntryName" type="Label" parent="InformationBook/MarginContainer2/RightSide/VBoxContainer" unique_id=45360697]
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.039215688, 0, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="InformationBook/MarginContainer2/RightSide/VBoxContainer" unique_id=2134450542]
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3605554, 0.19438863, 7.219613e-08, 1)
+theme_override_font_sizes/font_size = 15
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InformationBook/MarginContainer2/RightSide/VBoxContainer" unique_id=380524993]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 33
+bbcode_enabled = true
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="StageSelect/VBoxContainer/CarouselContainer/PrevButton" to="." method="_on_prev_button_pressed"]

@@ -1,0 +1,11 @@
+[gd_resource type="Theme" format=3 uid="uid://b2gqss1x4pp7d"]
+
+[ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="1_3ey03"]
+
+[resource]
+default_font = ExtResource("1_3ey03")
+default_font_size = 33
+GridContainer/constants/h_separation = 4
+GridContainer/constants/v_separation = 4
+Label/font_sizes/font_size = 14
+Label/fonts/font = ExtResource("1_3ey03")
