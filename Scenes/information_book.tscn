@@ -17,6 +17,7 @@ Label/font_sizes/font_size = 35
 Label/fonts/font = ExtResource("6_yscr4")
 
 [node name="InformationBook" type="MarginContainer" unique_id=7614341]
+visible = false
 custom_minimum_size = Vector2(640, 360)
 anchors_preset = 8
 anchor_left = 0.5
