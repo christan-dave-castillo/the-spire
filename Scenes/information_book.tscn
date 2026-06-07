@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://e35kgi0mrcw7"]
+
+[ext_resource type="Script" uid="uid://cwoukarr5hpuq" path="res://UI_script/InformationBook.gd" id="1_hyvqx"]
+[ext_resource type="Texture2D" uid="uid://bsgtbdakqfuy5" path="res://UIBook.png" id="2_jj15q"]
+[ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="3_swkim"]
+[ext_resource type="Theme" uid="uid://b2gqss1x4pp7d" path="res://ui-theme-book-info.tres" id="4_6gru1"]
+[ext_resource type="Texture2D" uid="uid://dep7tekr3jlwf" path="res://Ui asset/icons_set/icons_128/cross.png" id="5_6yorj"]
+[ext_resource type="FontFile" uid="uid://waefw4j0xun1" path="res://UI_asset/font/Silkscreen-Regular.ttf" id="6_yscr4"]
+
+[sub_resource type="Theme" id="Theme_78nhu"]
+default_font = ExtResource("3_swkim")
+default_font_size = 38
+GridContainer/constants/h_separation = 4
+GridContainer/constants/v_separation = 3
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 35
+Label/fonts/font = ExtResource("6_yscr4")
+
+[node name="InformationBook" type="MarginContainer" unique_id=7614341]
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -185.0
+offset_right = 360.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hyvqx")
+
+[node name="BookUi" type="TextureRect" parent="." unique_id=1593930174]
+custom_minimum_size = Vector2(700, 390)
+layout_mode = 2
+texture = ExtResource("2_jj15q")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=673769299]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 32
+
+[node name="Info_Types" type="VBoxContainer" parent="MarginContainer" unique_id=2115610417]
+custom_minimum_size = Vector2(300, 320)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 4
+
+[node name="CardInfo_EnemyTypes" type="TabContainer" parent="MarginContainer/Info_Types" unique_id=2059004749]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/tab_separation = 14
+theme_override_fonts/font = ExtResource("3_swkim")
+theme_override_font_sizes/font_size = 28
+tab_alignment = 1
+current_tab = 0
+tabs_position = 1
+
+[node name="Card Info" type="Button" parent="MarginContainer/Info_Types/CardInfo_EnemyTypes" unique_id=152504997]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_swkim")
+theme_override_font_sizes/font_size = 43
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Info_Types/CardInfo_EnemyTypes/Card Info" unique_id=1890658261]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 49.0
+offset_right = 291.0
+offset_bottom = 336.0
+horizontal_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Info_Types/CardInfo_EnemyTypes/Card Info/ScrollContainer" unique_id=1974961324]
+layout_mode = 2
+theme = ExtResource("4_6gru1")
+
+[node name="Enemy Type" type="Button" parent="MarginContainer/Info_Types/CardInfo_EnemyTypes" unique_id=1594556934]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_swkim")
+theme_override_font_sizes/font_size = 43
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Info_Types/CardInfo_EnemyTypes/Enemy Type" unique_id=1604069988]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 46.0
+offset_right = 292.0
+offset_bottom = 335.0
+horizontal_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Info_Types/CardInfo_EnemyTypes/Enemy Type/ScrollContainer" unique_id=865987375]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_6gru1")
+
+[node name="Button" type="Button" parent="." unique_id=1747666955]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/icon_normal_color = Color(0.89827543, 2.5990605e-06, 1.2513996e-06, 1)
+theme_override_colors/icon_pressed_color = Color(0.8980392, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.53986263, 1.0348111e-06, 2.8878452e-07, 1)
+icon = ExtResource("5_6yorj")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=489116548]
+custom_minimum_size = Vector2(330, 0)
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+theme = SubResource("Theme_78nhu")
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 35
+
+[node name="RightSide" type="VBoxContainer" parent="MarginContainer2" unique_id=581721775]
+custom_minimum_size = Vector2(280, 320)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/RightSide" unique_id=124269550]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/RightSide" unique_id=1500434319]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EntryName" type="Label" parent="MarginContainer2/RightSide/VBoxContainer" unique_id=1361208562]
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.039215688, 0, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/RightSide/VBoxContainer" unique_id=805735444]
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3605554, 0.19438863, 7.219613e-08, 1)
+theme_override_font_sizes/font_size = 15
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2/RightSide/VBoxContainer" unique_id=1358714815]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 33
+bbcode_enabled = true

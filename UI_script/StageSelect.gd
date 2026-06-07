@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 signal stage_selected(day_index: int)
 

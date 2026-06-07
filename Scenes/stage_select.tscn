@@ -1,0 +1,294 @@
+[gd_scene format=3 uid="uid://b4dos0mcf16p7"]
+
+[ext_resource type="Script" uid="uid://bjenapw25ubq1" path="res://UI_script/StageSelect.gd" id="1_b5r67"]
+[ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="2_hrot8"]
+[ext_resource type="Texture2D" uid="uid://jjo8wqwpndsq" path="res://UI_asset/713563140_1992526091387133_609481122706420311_n-1.png.png" id="2_qfn3x"]
+[ext_resource type="Script" uid="uid://dot5lmdo2hv7i" path="res://UI_script/ParallaxMouseDrift.gd" id="3_04duf"]
+[ext_resource type="Texture2D" uid="uid://e450lluq558w" path="res://Ui asset/Default/Panel/panel-028.png" id="3_chusq"]
+[ext_resource type="Texture2D" uid="uid://dlaixbnwedxml" path="res://UI_asset/602847.jpg" id="4_q5v7c"]
+[ext_resource type="Texture2D" uid="uid://cure7l5i45w3t" path="res://Ui asset/icons_set/icons_128/cursor_left.png" id="4_qfn3x"]
+[ext_resource type="Texture2D" uid="uid://eydbxohkx4m2" path="res://Ui asset/icons_set/icons_128/cursor_right.png" id="5_04duf"]
+[ext_resource type="StyleBox" uid="uid://bbfrs0aq7mmql" path="res://ui-stage-bottombutton.tres" id="6_q5v7c"]
+[ext_resource type="Texture2D" uid="uid://dpymx8fo7sg6x" path="res://Ui asset/Default/Transparent center/panel-transparent-center-021.png" id="7_df131"]
+[ext_resource type="Script" uid="uid://cgp36vre1usrp" path="res://UI_script/MatrixRain.gd" id="8_2gbh4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_64q8r"]
+content_margin_left = 23.0
+content_margin_bottom = 7.0
+texture = ExtResource("3_chusq")
+texture_margin_left = 30.0
+texture_margin_right = 30.0
+modulate_color = Color(0, 0, 0, 0.8117647)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gl0sa"]
+content_margin_bottom = 5.0
+texture = ExtResource("7_df131")
+texture_margin_left = 30.0
+texture_margin_right = 30.0
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qm53e"]
+content_margin_bottom = 5.0
+texture = ExtResource("7_df131")
+texture_margin_left = 30.0
+texture_margin_right = 30.0
+
+[node name="StageSelect" type="Control" unique_id=509560343]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_b5r67")
+metadata/_edit_lock_ = true
+
+[node name="TvBackground" type="TextureRect" parent="." unique_id=891171756 node_paths=PackedStringArray("target")]
+modulate = Color(1, 1, 1, 0.99607843)
+z_index = -1
+custom_minimum_size = Vector2(700, 380)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -190.0
+offset_right = 350.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qfn3x")
+expand_mode = 1
+script = ExtResource("3_04duf")
+drift_strength = 3.0
+smoothing = 10.0
+target = NodePath("..")
+metadata/_edit_lock_ = true
+
+[node name="WindowsBackground" type="TextureRect" parent="." unique_id=615013190]
+z_index = -3
+custom_minimum_size = Vector2(640, 380)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -190.0
+offset_right = 350.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_q5v7c")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1542457598]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -136.0
+offset_right = 245.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="DayLabel" type="Label" parent="VBoxContainer" unique_id=689007268]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_64q8r")
+text = "DAY 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CarouselContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1105446920]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="PrevButton" type="TextureButton" parent="VBoxContainer/CarouselContainer" unique_id=482340650]
+z_index = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("4_qfn3x")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CardViewport" type="HBoxContainer" parent="VBoxContainer/CarouselContainer" unique_id=1080573330]
+clip_contents = true
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="PrevCard" type="PanelContainer" parent="VBoxContainer/CarouselContainer/CardViewport" unique_id=381867543]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CarouselContainer/CardViewport/PrevCard" unique_id=855784077]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/CarouselContainer/CardViewport/PrevCard/VBoxContainer" unique_id=379663738]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 25
+
+[node name="SubLabel" type="Label" parent="VBoxContainer/CarouselContainer/CardViewport/PrevCard/VBoxContainer" unique_id=711788829]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 25
+
+[node name="CenterCard" type="Button" parent="VBoxContainer/CarouselContainer/CardViewport" unique_id=1603877781]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CarouselContainer/CardViewport/CenterCard" unique_id=1976002305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/CarouselContainer/CardViewport/CenterCard/VBoxContainer" unique_id=1645916372]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 30
+
+[node name="SubLabel" type="Label" parent="VBoxContainer/CarouselContainer/CardViewport/CenterCard/VBoxContainer" unique_id=88110201]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/CarouselContainer/CardViewport/CenterCard/VBoxContainer" unique_id=740678125]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_hrot8")
+text = "PRESS TO START"
+
+[node name="NextCard" type="PanelContainer" parent="VBoxContainer/CarouselContainer/CardViewport" unique_id=2009666220]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CarouselContainer/CardViewport/NextCard" unique_id=1143291659]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/CarouselContainer/CardViewport/NextCard/VBoxContainer" unique_id=196125217]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 25
+
+[node name="SubLabel" type="Label" parent="VBoxContainer/CarouselContainer/CardViewport/NextCard/VBoxContainer" unique_id=1866767966]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 25
+
+[node name="NextButton" type="TextureButton" parent="VBoxContainer/CarouselContainer" unique_id=1568103041]
+z_index = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("5_04duf")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DotsContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2141758581]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BottomButtons" type="GridContainer" parent="VBoxContainer" unique_id=1541433361]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="Types_InfoButton" type="Button" parent="VBoxContainer/BottomButtons" unique_id=1003253550]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("6_q5v7c")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gl0sa")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qm53e")
+text = "TYPES / INFO"
+
+[node name="EditDecksButton" type="Button" parent="VBoxContainer/BottomButtons" unique_id=800137249]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("6_q5v7c")
+text = "EDIT DECKS"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/BottomButtons" unique_id=1279203065]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("6_q5v7c")
+text = "SETTINGS"
+
+[node name="ShopButton" type="Button" parent="VBoxContainer/BottomButtons" unique_id=402121777]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("6_q5v7c")
+text = "SHOP"
+
+[node name="BackButton" type="Button" parent="." unique_id=1863468119]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 27.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hrot8")
+theme_override_font_sizes/font_size = 23
+text = "BACK"
+icon = ExtResource("4_qfn3x")
+flat = true
+expand_icon = true
+
+[node name="Matrixrain" type="Node2D" parent="." unique_id=352131557]
+z_index = -1
+script = ExtResource("8_2gbh4")
+font_size = 3
+column_spacing = 5
+drop_speed_min = 190.0
+drop_speed_max = 500.0
+trail_length = 20
+respawn_chance = 0.001
+clip_rect = Rect2(80, 10, 500, 340)

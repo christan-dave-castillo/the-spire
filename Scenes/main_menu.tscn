@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://1tvesdjtd4om"]
+
+[ext_resource type="Script" uid="uid://dot5lmdo2hv7i" path="res://UI_script/ParallaxMouseDrift.gd" id="1_1ehe0"]
+[ext_resource type="Theme" uid="uid://th34pxa0mcnb" path="res://ui-theme.tres" id="2_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://jjo8wqwpndsq" path="res://UI_asset/713563140_1992526091387133_609481122706420311_n-1.png.png" id="2_n45e2"]
+[ext_resource type="Script" uid="uid://chh0b7mslwu8j" path="res://UI_script/TitleLabel.gd" id="3_n45e2"]
+[ext_resource type="Texture2D" uid="uid://dlaixbnwedxml" path="res://UI_asset/602847.jpg" id="3_opfnp"]
+[ext_resource type="Script" uid="uid://dewyjvsuiy728" path="res://UI_script/ScreenGlow.gd" id="6_yhxw7"]
+[ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="7_trj04"]
+[ext_resource type="Script" uid="uid://8jxncobto3gf" path="res://UI_script/BootSequence.gd" id="8_16hvj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8g3n"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5v2v"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iotk1"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Gradient" id="Gradient_glbon"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vr1f0"]
+gradient = SubResource("Gradient_glbon")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1dhk"]
+content_margin_left = 10.0
+content_margin_top = 30.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 10
+
+[node name="MainMenu" type="Control" unique_id=229337688 node_paths=PackedStringArray("target")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(534, -66)
+script = ExtResource("1_1ehe0")
+target = NodePath(".")
+
+[node name="TvBackground" type="TextureRect" parent="." unique_id=74538838]
+modulate = Color(1, 1, 1, 0.99607843)
+z_index = -1
+custom_minimum_size = Vector2(700, 380)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -190.0
+offset_right = 350.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n45e2")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="WindowsBackground" type="TextureRect" parent="." unique_id=182850598]
+z_index = -3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -190.0
+offset_right = 350.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_opfnp")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=868015111]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -126.5
+offset_right = 150.0
+offset_bottom = 126.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer" unique_id=629372908]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme = ExtResource("2_ce3w2")
+text = "NET WARS"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_n45e2")
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=259581599]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_ce3w2")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_g8g3n")
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=1641861450]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_ce3w2")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j5v2v")
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=169159100]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_ce3w2")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 0.99607843)
+theme_override_styles/normal = SubResource("StyleBoxFlat_iotk1")
+text = "QUIT"
+
+[node name="TvScreenGlow" type="PointLight2D" parent="." unique_id=1532465068]
+texture_filter = 1
+position = Vector2(321, 200)
+scale = Vector2(280, 280)
+texture = SubResource("GradientTexture2D_vr1f0")
+texture_scale = 1.86
+script = ExtResource("6_yhxw7")
+base_energy = 1.0
+flicker_speed = 5.0
+flicker_amount = 0.5
+metadata/_edit_lock_ = true
+
+[node name="IntroCmdBootSequence" type="RichTextLabel" parent="." unique_id=1712330799]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -144.0
+offset_right = 217.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_trj04")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_t1dhk")
+script = ExtResource("8_16hvj")
+metadata/_edit_lock_ = true

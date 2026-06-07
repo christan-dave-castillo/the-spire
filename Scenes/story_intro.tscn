@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://b6lkf2v2vpqqo"]
+
+[ext_resource type="Script" uid="uid://dhu6x7qbfaj3w" path="res://story_intro.gd" id="1_qb4wh"]
+[ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="2_t1syr"]
+[ext_resource type="Texture2D" uid="uid://eydbxohkx4m2" path="res://Ui asset/icons_set/icons_128/cursor_right.png" id="3_7y8tx"]
+
+[sub_resource type="Theme" id="Theme_sb88j"]
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("2_t1syr")
+RichTextLabel/font_sizes/normal_font_size = 27
+RichTextLabel/fonts/normal_font = ExtResource("2_t1syr")
+
+[node name="StoryIntro" type="Node2D" unique_id=645037008]
+script = ExtResource("1_qb4wh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1937738297]
+
+[node name="DialogueUI" type="Control" parent="CanvasLayer" unique_id=2090388746]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_right = -17.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_sb88j")
+
+[node name="DialogueBox" type="PanelContainer" parent="CanvasLayer/DialogueUI" unique_id=1694886463]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DialogueUI/DialogueBox" unique_id=553983339]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer" unique_id=1031550419]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SpeakerLabel" type="Label" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer" unique_id=1788280959]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="DialogueText" type="RichTextLabel" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer" unique_id=275375100]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer" unique_id=821854425]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="DayBadge" type="Label" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=335147273]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="StepDotsRow" type="HBoxContainer" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=179189213]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Dot1" type="Panel" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer/StepDotsRow" unique_id=1095952142]
+layout_mode = 2
+
+[node name="Dot2" type="Panel" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer/StepDotsRow" unique_id=825518475]
+layout_mode = 2
+
+[node name="Dot3" type="Panel" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer/StepDotsRow" unique_id=1931718413]
+layout_mode = 2
+
+[node name="Dot4" type="Panel" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer/StepDotsRow" unique_id=1458771261]
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=243321175]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_t1syr")
+theme_override_font_sizes/font_size = 31
+text = "NEXT"
+icon = ExtResource("3_7y8tx")
+flat = true
+alignment = 2
+icon_alignment = 2
+expand_icon = true

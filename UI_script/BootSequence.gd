@@ -35,7 +35,6 @@ func _ready() -> void:
 	add_theme_color_override("default_color", Color.WHITE)
 	
 	
-	get_parent().get_node("MainMenu").modulate.a = 0.0   # Start menu invisible
 	
 	_type_sequence()
 
