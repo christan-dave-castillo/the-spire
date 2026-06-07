@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cawtnd4sti0mw"]
+
+[ext_resource type="Script" uid="uid://c63j76shtnx7g" path="res://Scripts/loading_screen.gd" id="1_oobaa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5lxv"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_oobaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0t5xw"]
+resource_name = "transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfm0g"]
+_data = {
+&"RESET": SubResource("Animation_oobaa"),
+&"transition": SubResource("Animation_0t5xw")
+}
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=1050807253]
+layer = 10
+script = ExtResource("1_oobaa")
+
+[node name="Panel" type="Panel" parent="." unique_id=515130747]
+modulate = Color(1, 1, 1, 0)
+offset_right = 638.0
+offset_bottom = 359.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5lxv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1323030946]
+libraries/ = SubResource("AnimationLibrary_nfm0g")

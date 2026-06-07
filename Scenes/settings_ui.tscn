@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b0y6xs3m5bxds" path="res://Ui asset/Default/Panel/panel-015.png" id="1_dm6ou"]
 [ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="2_r5c7y"]
+[ext_resource type="Script" uid="uid://cayk4tkyvsgbk" path="res://Scripts/Menus/Settings.gd" id="2_tx62x"]
 [ext_resource type="Theme" uid="uid://th34pxa0mcnb" path="res://ui-theme.tres" id="3_tx62x"]
 [ext_resource type="StyleBox" uid="uid://bdf1te7wuxdfj" path="res://ui-settings-button.tres" id="4_gnwwx"]
 
@@ -33,28 +34,33 @@ texture_margin_right = 10.0
 expand_margin_left = 5.0
 expand_margin_right = 5.0
 
-[node name="SettingsUi" type="MarginContainer" unique_id=380447230]
+[node name="SettingsUi" type="CanvasLayer" unique_id=1738418986]
+
+[node name="Panel" type="Panel" parent="." unique_id=802242619]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -102.0
+offset_left = -100.5
 offset_top = -100.0
-offset_right = 99.0
+offset_right = 100.5
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="." unique_id=802242619]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_uwv6w")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=104065348]
-layout_mode = 2
+offset_left = 252.0
+offset_top = 104.0
+offset_right = 389.0
+offset_bottom = 254.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 51
+script = ExtResource("2_tx62x")
 
 [node name="MasterVolume" type="Label" parent="VBoxContainer" unique_id=1939957004]
 layout_mode = 2
@@ -120,3 +126,5 @@ theme_override_styles/normal = ExtResource("4_gnwwx")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_87p6h")
 theme_override_styles/hover = SubResource("StyleBoxTexture_fpbkv")
 text = "BACK TO MAIN MENU"
+
+[connection signal="pressed" from="VBoxContainer/BacktoMainMenu" to="VBoxContainer" method="_on_backto_main_menu_pressed"]

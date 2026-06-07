@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cdp2opxo7soqe"]
+
+[ext_resource type="Script" uid="uid://cch5bi6bnb1dv" path="res://GameController.gd" id="1_uap0n"]
+[ext_resource type="Script" uid="uid://bsudwd36333fo" path="res://UI_script/music.gd" id="2_5w14q"]
+[ext_resource type="AudioStream" uid="uid://dcvalrhmxecov" path="res://UI_asset/music/EuropaIce Extended.ogg" id="3_acxaq"]
+[ext_resource type="PackedScene" uid="uid://d2d2acmbg6wb0" path="res://Scenes/settings_ui.tscn" id="4_5w14q"]
+[ext_resource type="PackedScene" uid="uid://e35kgi0mrcw7" path="res://Scenes/information_book.tscn" id="5_acxaq"]
+
+[node name="GameController" type="Node" unique_id=896205187]
+script = ExtResource("1_uap0n")
+
+[node name="SettingsUi" parent="." unique_id=1738418986 instance=ExtResource("4_5w14q")]
+visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=969562412]
+position = Vector2(331, 190)
+autoplay = true
+max_distance = 500.0
+script = ExtResource("2_5w14q")
+music_stream = ExtResource("3_acxaq")
+
+[node name="CurrentSceneHolder" type="Control" parent="." unique_id=638524647]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="." unique_id=249917766]
+
+[node name="InformationBook" parent="." unique_id=7614341 instance=ExtResource("5_acxaq")]

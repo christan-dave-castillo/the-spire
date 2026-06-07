@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b08rx6ej3dg7d"
+
+[deps]
+
+files=["res://CSV/threats.alerts.translation", "res://CSV/threats.clues.translation", "res://CSV/threats.description.translation", "res://CSV/threats.real.translation", "res://CSV/threats.hint.translation"]
+
+source_file="res://CSV/threats.csv"
+dest_files=["res://CSV/threats.alerts.translation", "res://CSV/threats.clues.translation", "res://CSV/threats.description.translation", "res://CSV/threats.real.translation", "res://CSV/threats.hint.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

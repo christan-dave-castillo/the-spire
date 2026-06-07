@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjenapw25ubq1" path="res://UI_script/StageSelect.gd" id="1_b5r67"]
 [ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="2_hrot8"]
-[ext_resource type="Texture2D" uid="uid://jjo8wqwpndsq" path="res://UI_asset/713563140_1992526091387133_609481122706420311_n-1.png.png" id="2_qfn3x"]
+[ext_resource type="Texture2D" uid="uid://c1try5vkgjmy6" path="res://UI_asset/images/713563140_1992526091387133_609481122706420311_n-1.png.png" id="2_qfn3x"]
 [ext_resource type="Script" uid="uid://dot5lmdo2hv7i" path="res://UI_script/ParallaxMouseDrift.gd" id="3_04duf"]
 [ext_resource type="Texture2D" uid="uid://e450lluq558w" path="res://Ui asset/Default/Panel/panel-028.png" id="3_chusq"]
 [ext_resource type="Texture2D" uid="uid://dlaixbnwedxml" path="res://UI_asset/602847.jpg" id="4_q5v7c"]
@@ -270,9 +270,11 @@ text = "SHOP"
 
 [node name="BackButton" type="Button" parent="." unique_id=1863468119]
 custom_minimum_size = Vector2(50, 0)
-layout_mode = 0
-offset_right = 50.0
-offset_bottom = 27.0
+layout_mode = 1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 51.0
+offset_bottom = 28.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_hrot8")
@@ -292,3 +294,7 @@ drop_speed_max = 500.0
 trail_length = 20
 respawn_chance = 0.001
 clip_rect = Rect2(80, 10, 500, 340)
+
+[connection signal="pressed" from="VBoxContainer/BottomButtons/Types_InfoButton" to="." method="_on_types_info_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BottomButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

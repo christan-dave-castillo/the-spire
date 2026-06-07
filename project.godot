@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TheSpire"
-run/main_scene="res://inGameUI.tscn"
+run/main_scene="uid://cdp2opxo7soqe"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,7 +19,8 @@ config/icon="res://icon.svg"
 
 Music="*uid://bsudwd36333fo"
 GameManager="*uid://1kw5qkelamfl"
-CodexData="*uid://b42u3u2bwubce"
+GlobalVars="*uid://d1jh8g3hv3yp7"
+SceneLoader="*uid://c4lfsm54reesq"
 
 [display]
 
@@ -29,6 +30,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="TheSpire"
 
 [physics]
 
