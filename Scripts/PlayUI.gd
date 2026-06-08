@@ -68,6 +68,7 @@ var _hand_w:   float   = 0.0           # hand container width
 
 @onready var hud_layer:           CanvasLayer   = $HUD
 @onready var story_intro                        = $StoryIntro
+@onready var pause_menu:          CanvasLayer   = $PauseMenu
 
 const TUTORIAL_SCENE := preload("res://Scenes/Tutorial.tscn")
 
@@ -331,7 +332,9 @@ func _setup_hud() -> void:
 	shop_btn.pressed.connect(_on_shop_pressed)
 	next_day_btn.pressed.connect(_on_next_day_pressed)
 	if settings_btn:
-		settings_btn.pressed.connect(func(): GlobalVars.settings_ui.visible = true)
+		settings_btn.pressed.connect(func(): pause_menu.open_pause())
+	if pause_menu:
+		pause_menu.quit_pressed.connect(_on_return_to_menu)
 	if infobook_btn:
 		infobook_btn.pressed.connect(func(): GlobalVars.info_book.visible = true)
 	if edit_deck_btn_hud:

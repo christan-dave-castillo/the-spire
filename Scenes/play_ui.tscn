@@ -28,6 +28,7 @@
 [ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="24_qoch7"]
 [ext_resource type="Texture2D" uid="uid://b0y6xs3m5bxds" path="res://Ui asset/Default/Panel/panel-015.png" id="25_gyvqv"]
 [ext_resource type="Texture2D" uid="uid://dx5v8cq5bnpvw" path="res://UI_asset/card_images/Deck.png" id="26_qoch7"]
+[ext_resource type="PackedScene" uid="uid://c8t68bt5k4n37" path="res://Scenes/PauseMenu.tscn" id="29_3cdb8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kku0w"]
 texture = ExtResource("2_wfuxs")
@@ -719,3 +720,6 @@ theme_override_colors/font_color = Color(0.7, 0.78, 0.9, 1)
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="PauseMenu" parent="." unique_id=1751241837 instance=ExtResource("29_3cdb8")]
+visible = false
