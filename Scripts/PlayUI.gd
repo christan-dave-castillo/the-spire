@@ -398,6 +398,11 @@ func _populate_alert_panel() -> void:
 			continue
 		alert_clue_placeholders.append(ph)
 		alert_clue_labels.append(lbl)
+		# The scene sets font_size = 12 inside a 9 px tall container — text clips and
+		# is invisible.  Override to 8 px (m3x6 at 8 fits in 9 px) and turn off
+		# autowrap so long descriptions clip horizontally instead of wrapping.
+		lbl.add_theme_font_size_override("font_size", 8)
+		lbl.autowrap_mode = TextServer.AUTOWRAP_OFF
 		if i < threat_clues.size():
 			lbl.text = "›  " + threat_clues[i]
 		else:
@@ -544,8 +549,13 @@ func _update_alert_panel() -> void:
 	# Only touch slots that actually have clue data — extras were hidden in _populate_alert_panel()
 	var clue_count := mini(alert_clue_labels.size(), threat_clues.size())
 	for i in clue_count:
-		alert_clue_labels[i].visible       = i < revealed_clue_count   # show when revealed
-		alert_clue_placeholders[i].visible = i >= revealed_clue_count  # show when unrevealed
+		var revealed := i < revealed_clue_count
+		# IMPORTANT: each ClueLabel is a *child* of its CluePlaceholder (ColorRect).
+		# Setting placeholder.visible = false propagates to the label child and hides it,
+		# even if label.visible = true.  Instead, keep the placeholder node always visible
+		# and control the grey bar by zeroing its own color alpha (which does NOT cascade).
+		alert_clue_placeholders[i].color.a = 0.0 if revealed else 0.85
+		alert_clue_labels[i].visible        = revealed
 	_check_threat_reveal()
 
 ## Show alerts up to alerts_revealed — called at start and each end turn.
