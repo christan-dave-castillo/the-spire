@@ -34,41 +34,41 @@ var shop_items: Array[Dictionary] = []
 const ALL_CARDS: Array[Dictionary] = [
 	# Investigation
 	{ "id": "review_logs",          "name": "Review Logs",            "type": "Investigation", "energy": 1, "logic": "Reveal 1 Clue",                       "tooltip": "Examine security logs for suspicious activity" },
-	{ "id": "threat_intel_lookup",  "name": "Threat Intel Lookup",    "type": "Investigation", "energy": 1, "logic": "Reveal 1 Clue\n+5 Containment",        "tooltip": "Compare findings against known threats" },
+	{ "id": "threat_intel_lookup",  "name": "Threat Intel ",    "type": "Investigation", "energy": 1, "logic": "Reveal 1 Clue\n+5 Containment",        "tooltip": "Compare findings against known threats" },
 	{ "id": "packet_capture",       "name": "Packet Capture",         "type": "Investigation", "energy": 2, "logic": "Reveal 2 Clues",                       "tooltip": "Inspect network traffic for suspicious comms" },
-	{ "id": "analyze_email_header", "name": "Analyze Email Header",   "type": "Investigation", "energy": 1, "logic": "Reveal 2 Clues",                       "tooltip": "Inspect sender and routing information" },
+	{ "id": "analyze_email_header", "name": "Analyze Email ",   "type": "Investigation", "energy": 1, "logic": "Reveal 2 Clues",                       "tooltip": "Inspect sender and routing information" },
 	{ "id": "threat_hunt",          "name": "Threat Hunt",            "type": "Investigation", "energy": 2, "logic": "Reveal 3 Clues",                       "tooltip": "Proactively search for hidden threats" },
-	{ "id": "forensic_analysis",    "name": "Forensic Analysis",      "type": "Investigation", "energy": 2, "logic": "Reveal 2 Clues\n+5 Containment",       "tooltip": "Detailed examination of compromised systems" },
+	{ "id": "forensic_analysis",    "name": "Forensic ",      "type": "Investigation", "energy": 2, "logic": "Reveal 2 Clues\n+5 Containment",       "tooltip": "Detailed examination of compromised systems" },
 	# Monitoring
 	{ "id": "siem_platform",        "name": "SIEM Platform",          "type": "Monitoring",    "energy": 2, "logic": "Gain 1 Clue each turn",                "tooltip": "Centralize and analyze security events" },
 	{ "id": "edr_monitoring",       "name": "EDR Monitoring",         "type": "Monitoring",    "energy": 2, "logic": "Gain Detection each turn",              "tooltip": "Continuously monitor endpoints" },
 	{ "id": "threat_intel_feed",    "name": "Threat Intel Feed",      "type": "Monitoring",    "energy": 1, "logic": "Investigation cards\nreveal +1 Clue",   "tooltip": "Receive updated threat information" },
 	{ "id": "dlp_monitoring",       "name": "DLP Monitoring",         "type": "Monitoring",    "energy": 2, "logic": "Reduce Breach from\ndata theft",        "tooltip": "Monitor sensitive data movement" },
 	# Hardening
-	{ "id": "mfa",                  "name": "Multi-Factor Auth",      "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Require an additional verification step" },
-	{ "id": "patch_management",     "name": "Patch Management",       "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Apply security updates to systems" },
-	{ "id": "least_privilege",      "name": "Least Privilege",        "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Limit access to only what is necessary" },
-	{ "id": "app_whitelisting",     "name": "App Whitelisting",       "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Allow only approved applications to run" },
-	{ "id": "security_training",    "name": "Security Training",      "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Teach users to recognize suspicious activity" },
+	{ "id": "mfa",                  "name": "Multi-Factor ",      "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Require an additional verification step" },
+	{ "id": "patch_management",     "name": "Patch ",       "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Apply security updates to systems" },
+	{ "id": "least_privilege",      "name": "Least ",        "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Limit access to only what is necessary" },
+	{ "id": "app_whitelisting",     "name": "App ",       "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Allow only approved applications to run" },
+	{ "id": "security_training",    "name": "Security ",      "type": "Hardening",     "energy": 2, "logic": "Reduce future\nbreach progress",        "tooltip": "Teach users to recognize suspicious activity" },
 	# Response
-	{ "id": "host_isolation",       "name": "Host Isolation",         "type": "Response",      "energy": 2, "logic": "Gain 20 Containment",                  "tooltip": "Disconnect an affected device from network" },
-	{ "id": "disable_account",      "name": "Disable Account",        "type": "Response",      "energy": 1, "logic": "Gain 15 Containment",                  "tooltip": "Prevent use of a compromised account" },
-	{ "id": "block_ip",             "name": "Block IP Address",       "type": "Response",      "energy": 1, "logic": "Gain 10 Containment",                  "tooltip": "Block a suspicious network source" },
-	{ "id": "network_segmentation", "name": "Network Segmentation",   "type": "Response",      "energy": 3, "logic": "Gain 25 Containment\n-10 Breach",      "tooltip": "Separate systems into security zones" },
-	{ "id": "quarantine_file",      "name": "Quarantine File",        "type": "Response",      "energy": 1, "logic": "Gain 15 Containment",                  "tooltip": "Prevent a suspicious file from executing" },
+	{ "id": "host_isolation",       "name": "Host ",         "type": "Response",      "energy": 2, "logic": "Gain 20 Containment",                  "tooltip": "Disconnect an affected device from network" },
+	{ "id": "disable_account",      "name": "Disable ",        "type": "Response",      "energy": 1, "logic": "Gain 15 Containment",                  "tooltip": "Prevent use of a compromised account" },
+	{ "id": "block_ip",             "name": "Block IP ",       "type": "Response",      "energy": 1, "logic": "Gain 10 Containment",                  "tooltip": "Block a suspicious network source" },
+	{ "id": "network_segmentation", "name": "Network",   "type": "Response",      "energy": 3, "logic": "Gain 25 Containment\n-10 Breach",      "tooltip": "Separate systems into security zones" },
+	{ "id": "quarantine_file",      "name": "Quarantine ",        "type": "Response",      "energy": 1, "logic": "Gain 15 Containment",                  "tooltip": "Prevent a suspicious file from executing" },
 	# Recovery
-	{ "id": "backup_recovery",      "name": "Backup Recovery",        "type": "Recovery",      "energy": 3, "logic": "Restore 30 Integrity",                 "tooltip": "Recover systems from backups" },
-	{ "id": "system_restore",       "name": "System Restore",         "type": "Recovery",      "energy": 2, "logic": "Restore 20 Integrity",                 "tooltip": "Return systems to a previous state" },
-	{ "id": "data_recovery",        "name": "Data Recovery",          "type": "Recovery",      "energy": 3, "logic": "Restore 25 Integrity",                 "tooltip": "Recover lost or deleted information" },
-	{ "id": "recovery_validation",  "name": "Recovery Validation",    "type": "Recovery",      "energy": 1, "logic": "Gain 10 Integrity\nDraw 1 card",       "tooltip": "Verify that recovery actions succeeded" },
+	{ "id": "backup_recovery",      "name": "Backup ",        "type": "Recovery",      "energy": 3, "logic": "Restore 30 Integrity",                 "tooltip": "Recover systems from backups" },
+	{ "id": "system_restore",       "name": "System ",         "type": "Recovery",      "energy": 2, "logic": "Restore 20 Integrity",                 "tooltip": "Return systems to a previous state" },
+	{ "id": "data_recovery",        "name": "Data ",          "type": "Recovery",      "energy": 3, "logic": "Restore 25 Integrity",                 "tooltip": "Recover lost or deleted information" },
+	{ "id": "recovery_validation",  "name": "Recovery",    "type": "Recovery",      "energy": 1, "logic": "Gain 10 Integrity\nDraw 1 card",       "tooltip": "Verify that recovery actions succeeded" },
 	# Automation
 	{ "id": "soar_playbook",        "name": "SOAR Playbook",          "type": "Automation",    "energy": 3, "logic": "Auto-play a random\nResponse card",    "tooltip": "Automate incident response actions" },
-	{ "id": "auto_lockout",         "name": "Auto Account Lockout",   "type": "Automation",    "energy": 2, "logic": "Auto-respond to\nsuspicious logins",    "tooltip": "Lock accounts after repeated failed logins" },
+	{ "id": "auto_lockout",         "name": "Auto Account",   "type": "Automation",    "energy": 2, "logic": "Auto-respond to\nsuspicious logins",    "tooltip": "Lock accounts after repeated failed logins" },
 	{ "id": "scheduled_scan",       "name": "Scheduled Scan",         "type": "Automation",    "energy": 1, "logic": "Reveal 1 Clue\nat start of turn",      "tooltip": "Run routine security scans automatically" },
-	{ "id": "threat_feed_auto",     "name": "Threat Feed Automation", "type": "Automation",    "energy": 1, "logic": "Intel cards\ncost 1 less energy",      "tooltip": "Automatically import threat intel updates" },
+	{ "id": "threat_feed_auto",     "name": "Threat Feed", "type": "Automation",    "energy": 1, "logic": "Intel cards\ncost 1 less energy",      "tooltip": "Automatically import threat intel updates" },
 	# Rare
 	{ "id": "zero_trust",           "name": "Zero Trust",             "type": "Rare",          "energy": 4, "logic": "Reduce all Breach\ngain by 25%",       "tooltip": "Never trust, always verify" },
-	{ "id": "mdr",                  "name": "Managed Detection",      "type": "Rare",          "energy": 4, "logic": "Gain 1 Clue\n+5 Containment/turn",     "tooltip": "External experts assist detection & response" },
+	{ "id": "mdr",                  "name": "Managed",      "type": "Rare",          "energy": 4, "logic": "Gain 1 Clue\n+5 Containment/turn",     "tooltip": "External experts assist detection & response" },
 	{ "id": "soc_expansion",        "name": "SOC Expansion",          "type": "Rare",          "energy": 4, "logic": "Gain 1 Energy\neach turn",             "tooltip": "Expand analyst capacity and operations" },
 ]
 
@@ -84,6 +84,7 @@ func _ready() -> void:
 	close_button.pressed.connect(close_shop)
 	_update_coins_display()
 	open_shop()
+	
 
 
 func open_shop(coins_earned: int = 0) -> void:
@@ -93,11 +94,13 @@ func open_shop(coins_earned: int = 0) -> void:
 	_build_cards()
 	_refresh_card_states()
 	shop_panel.show()
+	self.show()
 
 
 func close_shop() -> void:
 	shop_panel.hide()
 	emit_signal("shop_closed")
+
 
 
 func set_coins(amount: int) -> void:
@@ -146,24 +149,24 @@ func _create_card(item: Dictionary) -> Control:
 	root.add_child(bg)
 
 	# Colored tint overlay on icon zone to show card type
-	var tint = ColorRect.new()
-	tint.color = TYPE_COLORS.get(item["type"], Color(1, 1, 1, 0.1))
-	tint.set_anchor_and_offset(SIDE_LEFT,   0, 8)
-	tint.set_anchor_and_offset(SIDE_RIGHT,  1, -8)
-	tint.set_anchor_and_offset(SIDE_TOP,    0, 8)
-	tint.set_anchor_and_offset(SIDE_BOTTOM, 0, ICON_ZONE_H - 2)
-	root.add_child(tint)
+	#var tint = ColorRect.new()
+	#tint.color = TYPE_COLORS.get(item["type"], Color(1, 1, 1, 0.1))
+	#tint.set_anchor_and_offset(SIDE_LEFT,   0, 8)
+	#tint.set_anchor_and_offset(SIDE_RIGHT,  1, -8)
+	#tint.set_anchor_and_offset(SIDE_TOP,    0, 8)
+	#tint.set_anchor_and_offset(SIDE_BOTTOM, 0, ICON_ZONE_H - 2)
+	#root.add_child(tint)
 
-	# Energy cost (top of icon zone)
-	var energy_lbl = Label.new()
-	energy_lbl.text = "⚡%d" % item["energy"]
-	energy_lbl.add_theme_font_size_override("font_size", 11)
-	energy_lbl.add_theme_color_override("font_color", Color(1.0, 0.95, 0.3))
-	energy_lbl.set_anchor_and_offset(SIDE_LEFT,   0, 10)
-	energy_lbl.set_anchor_and_offset(SIDE_TOP,    0, 10)
-	energy_lbl.set_anchor_and_offset(SIDE_RIGHT,  1, -10)
-	energy_lbl.set_anchor_and_offset(SIDE_BOTTOM, 0, 26)
-	root.add_child(energy_lbl)
+	## Energy cost (top of icon zone)
+	#var energy_lbl = Label.new()
+	#energy_lbl.text = "%d" % item["energy"]
+	#energy_lbl.add_theme_font_size_override("font_size", 0)
+	#energy_lbl.add_theme_color_override("font_color", Color(1.0, 0.95, 0.3))
+	#energy_lbl.set_anchor_and_offset(SIDE_LEFT,   0, 10)
+	#energy_lbl.set_anchor_and_offset(SIDE_TOP,    0, 10)
+	#energy_lbl.set_anchor_and_offset(SIDE_RIGHT,  0, 10)
+	#energy_lbl.set_anchor_and_offset(SIDE_BOTTOM, 0, 26)
+	#root.add_child(energy_lbl)
 
 	# Logic text in icon zone center
 	var logic_lbl = Label.new()

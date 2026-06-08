@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ube0encltrvk"
-path="res://.godot/imported/Card.png-59023363b7cadba4cdf63af0d9dd75da.ctex"
+uid="uid://cafcvb6prmckj"
+path="res://.godot/imported/Sentinel Back Card.png-d87741e6a3fb8064f6c27fe2d40cfc84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_asset/images/Card.png"
-dest_files=["res://.godot/imported/Card.png-59023363b7cadba4cdf63af0d9dd75da.ctex"]
+source_file="res://UI_asset/Sentinel Back Card.png"
+dest_files=["res://.godot/imported/Sentinel Back Card.png-d87741e6a3fb8064f6c27fe2d40cfc84.ctex"]
 
 [params]
 

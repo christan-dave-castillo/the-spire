@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dcvalrhmxecov" path="res://UI_asset/music/EuropaIce Extended.ogg" id="3_acxaq"]
 [ext_resource type="PackedScene" uid="uid://d2d2acmbg6wb0" path="res://Scenes/settings_ui.tscn" id="4_5w14q"]
 [ext_resource type="PackedScene" uid="uid://e35kgi0mrcw7" path="res://Scenes/information_book.tscn" id="5_acxaq"]
+[ext_resource type="PackedScene" uid="uid://dv1tbksru681u" path="res://ShopUI.tscn" id="6_i7pi0"]
 
 [node name="GameController" type="Node" unique_id=896205187]
 script = ExtResource("1_uap0n")
@@ -30,3 +31,7 @@ grow_vertical = 2
 [node name="Node2D" type="Node2D" parent="." unique_id=249917766]
 
 [node name="InformationBook" parent="." unique_id=7614341 instance=ExtResource("5_acxaq")]
+visible = false
+
+[node name="ShopUI" parent="." unique_id=1536329676 instance=ExtResource("6_i7pi0")]
+visible = false

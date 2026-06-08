@@ -1,6 +1,8 @@
 extends Node
 
-
+var game_controller: GameController = null
+var settings_ui = null
+var info_book = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

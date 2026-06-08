@@ -139,3 +139,7 @@ func _on_settings_button_pressed() -> void:
 
 func _on_types_info_button_pressed() -> void:
 	GlobalVars.info_book.visible = true
+
+
+func _on_shop_button_pressed() -> void:
+	GlobalVars.shop_ui.open_shop()

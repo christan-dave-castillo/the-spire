@@ -12,7 +12,9 @@ func _ready() -> void:
 	GlobalVars.game_controller = self
 	GlobalVars.settings_ui = $SettingsUi
 	GlobalVars.info_book = $InformationBook
+	GlobalVars.shop_ui = $ShopUI
 	change_sub_scene(MAIN_MENU)
+	GlobalVars.shop_ui.hide()
 
 func change_sub_scene(new_scene_blueprint: PackedScene) -> void:
 	for child in scene_holder.get_children():
