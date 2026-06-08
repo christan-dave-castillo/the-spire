@@ -25,7 +25,6 @@
 [ext_resource type="FontFile" uid="uid://cmjg4i028mrys" path="res://UI_asset/font/Silkscreen-Bold.ttf" id="23_3g73l"]
 [ext_resource type="FontFile" uid="uid://waefw4j0xun1" path="res://UI_asset/font/Silkscreen-Regular.ttf" id="24_3g73l"]
 [ext_resource type="Texture2D" uid="uid://bvbq384kwmmic" path="res://UI_asset/card_images/discardpile.png" id="24_disctex"]
-[ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="24_qoch7"]
 [ext_resource type="Texture2D" uid="uid://b0y6xs3m5bxds" path="res://Ui asset/Default/Panel/panel-015.png" id="25_gyvqv"]
 [ext_resource type="Texture2D" uid="uid://dx5v8cq5bnpvw" path="res://UI_asset/card_images/Deck.png" id="26_qoch7"]
 
@@ -83,6 +82,7 @@ offset_bottom = 160.0
 script = ExtResource("20_playui_script")
 
 [node name="StoryIntro" parent="." unique_id=645037008 instance=ExtResource("18_wfuxs")]
+visible = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=242210744]
 
@@ -242,7 +242,6 @@ offset_top = 18.0
 offset_right = 133.0
 offset_bottom = 24.0
 mouse_filter = 2
-theme_override_colors/font_color = Color(0, 0, 1, 1)
 value = 100.0
 show_percentage = false
 
@@ -263,7 +262,6 @@ offset_top = 44.0
 offset_right = 137.0
 offset_bottom = 50.0
 mouse_filter = 2
-theme_override_colors/font_color = Color(0, 1, 0, 1)
 show_percentage = false
 
 [node name="BreachLabel" type="Label" parent="HUD/HUDRoot/TopBar" unique_id=1110099906]
@@ -283,8 +281,6 @@ offset_top = 53.0
 offset_right = 319.0
 offset_bottom = 60.0
 mouse_filter = 2
-theme_override_colors/font_color = Color(0.80842286, 0.39989692, 1.92523e-07, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 show_percentage = false
 
 [node name="AlertPanel" type="Control" parent="HUD/HUDRoot" unique_id=1908134746]
@@ -345,7 +341,7 @@ offset_left = 9.0
 offset_top = 50.0
 offset_right = 214.0
 offset_bottom = 69.0
-theme_override_fonts/font = ExtResource("24_qoch7")
+theme_override_fonts/font = ExtResource("24_3g73l")
 theme_override_font_sizes/font_size = 14
 text = "1"
 autowrap_mode = 2
@@ -358,7 +354,7 @@ offset_left = 9.0
 offset_top = 66.0
 offset_right = 221.0
 offset_bottom = 85.0
-theme_override_fonts/font = ExtResource("24_qoch7")
+theme_override_fonts/font = ExtResource("24_3g73l")
 theme_override_font_sizes/font_size = 14
 text = "2"
 metadata/_edit_lock_ = true
@@ -370,7 +366,7 @@ offset_left = 9.0
 offset_top = 82.0
 offset_right = 220.0
 offset_bottom = 101.0
-theme_override_fonts/font = ExtResource("24_qoch7")
+theme_override_fonts/font = ExtResource("24_3g73l")
 theme_override_font_sizes/font_size = 14
 text = "3"
 metadata/_edit_lock_ = true
@@ -382,7 +378,7 @@ offset_left = 8.0
 offset_top = 97.0
 offset_right = 220.0
 offset_bottom = 116.0
-theme_override_fonts/font = ExtResource("24_qoch7")
+theme_override_fonts/font = ExtResource("24_3g73l")
 theme_override_font_sizes/font_size = 14
 text = "4"
 metadata/_edit_lock_ = true
@@ -394,7 +390,7 @@ offset_left = 8.0
 offset_top = 110.0
 offset_right = 220.0
 offset_bottom = 129.0
-theme_override_fonts/font = ExtResource("24_qoch7")
+theme_override_fonts/font = ExtResource("24_3g73l")
 theme_override_font_sizes/font_size = 14
 text = "5"
 metadata/_edit_lock_ = true
@@ -427,19 +423,14 @@ offset_bottom = 160.0
 mouse_filter = 2
 color = Color(0.2, 0.2, 0.26, 0.85)
 
-[node name="Clue0Label" type="Label" parent="HUD/HUDRoot/AlertPanel/Clue0Placeholder" unique_id=1607368987]
+[node name="Clue0Label" type="Label" parent="HUD/HUDRoot/AlertPanel" unique_id=1607368987]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
-theme_override_fonts/font = ExtResource("24_qoch7")
-theme_override_font_sizes/font_size = 12
+clip_contents = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 110.0
+offset_right = 216.0
+offset_bottom = 125.0
 autowrap_mode = 1
 
 [node name="Clue1Placeholder" type="ColorRect" parent="HUD/HUDRoot/AlertPanel" unique_id=47261884]
@@ -451,22 +442,36 @@ offset_bottom = 170.0
 mouse_filter = 2
 color = Color(0.2, 0.2, 0.26, 0.85)
 
-[node name="Clue1Label" type="Label" parent="HUD/HUDRoot/AlertPanel/Clue1Placeholder" unique_id=1334340977]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -0.5
-offset_right = -2.0
-offset_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
-theme_override_fonts/font = ExtResource("24_qoch7")
-theme_override_font_sizes/font_size = 12
+[node name="Clue1Label" type="Label" parent="HUD/HUDRoot/AlertPanel" unique_id=1334340977]
+visible = false
+clip_contents = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 125.0
+offset_right = 216.0
+offset_bottom = 140.0
 autowrap_mode = 1
 
 [node name="Clue2Placeholder" type="ColorRect" parent="HUD/HUDRoot/AlertPanel" unique_id=487731374]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 199.0
+offset_right = 207.0
+offset_bottom = 208.0
+mouse_filter = 2
+color = Color(0.2, 0.2, 0.26, 0.85)
+
+[node name="Clue2Label" type="Label" parent="HUD/HUDRoot/AlertPanel" unique_id=497727779]
+visible = false
+clip_contents = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 140.0
+offset_right = 216.0
+offset_bottom = 155.0
+autowrap_mode = 1
+
+[node name="Clue3Placeholder" type="ColorRect" parent="HUD/HUDRoot/AlertPanel" unique_id=214652859]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 171.0
@@ -475,22 +480,17 @@ offset_bottom = 180.0
 mouse_filter = 2
 color = Color(0.2, 0.2, 0.26, 0.85)
 
-[node name="Clue2Label" type="Label" parent="HUD/HUDRoot/AlertPanel/Clue2Placeholder" unique_id=497727779]
+[node name="Clue3Label" type="Label" parent="HUD/HUDRoot/AlertPanel" unique_id=1560668243]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
-theme_override_fonts/font = ExtResource("24_qoch7")
-theme_override_font_sizes/font_size = 12
+clip_contents = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 155.0
+offset_right = 216.0
+offset_bottom = 170.0
 autowrap_mode = 1
 
-[node name="Clue3Placeholder" type="ColorRect" parent="HUD/HUDRoot/AlertPanel" unique_id=214652859]
+[node name="Clue4Placeholder" type="ColorRect" parent="HUD/HUDRoot/AlertPanel" unique_id=757376974]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 181.0
@@ -499,91 +499,59 @@ offset_bottom = 190.0
 mouse_filter = 2
 color = Color(0.2, 0.2, 0.26, 0.85)
 
-[node name="Clue3Label" type="Label" parent="HUD/HUDRoot/AlertPanel/Clue3Placeholder" unique_id=1560668243]
+[node name="Clue4Label" type="Label" parent="HUD/HUDRoot/AlertPanel" unique_id=370520556]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
-theme_override_fonts/font = ExtResource("24_qoch7")
-theme_override_font_sizes/font_size = 12
-autowrap_mode = 1
-
-[node name="Clue4Placeholder" type="ColorRect" parent="HUD/HUDRoot/AlertPanel" unique_id=757376974]
+clip_contents = true
 layout_mode = 0
-offset_left = 9.0
-offset_top = 191.0
+offset_left = 4.0
+offset_top = 170.0
 offset_right = 216.0
-offset_bottom = 200.0
-mouse_filter = 2
-color = Color(0.2, 0.2, 0.26, 0.85)
-
-[node name="Clue4Label" type="Label" parent="HUD/HUDRoot/AlertPanel/Clue4Placeholder" unique_id=370520556]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
-theme_override_fonts/font = ExtResource("24_qoch7")
-theme_override_font_sizes/font_size = 12
+offset_bottom = 185.0
 autowrap_mode = 1
 
 [node name="BottomStrip" type="Control" parent="HUD/HUDRoot" unique_id=1131733994]
 anchors_preset = 0
-offset_left = -2.0
-offset_top = 262.0
-offset_right = 638.0
-offset_bottom = 382.0
+offset_top = 240.0
+offset_right = 640.0
+offset_bottom = 360.0
 mouse_filter = 2
 
 [node name="BottomBg" type="ColorRect" parent="HUD/HUDRoot/BottomStrip" unique_id=2113207322]
 layout_mode = 0
-offset_left = 77.0
-offset_top = -10.0
+offset_left = 105.0
+offset_top = 27.0
 offset_right = 496.0
-offset_bottom = 84.0
+offset_bottom = 121.0
 mouse_filter = 2
 color = Color(0.04, 0.04, 0.06, 0.8)
-metadata/_edit_lock_ = true
 
 [node name="EnergyLabel" type="Label" parent="HUD/HUDRoot/BottomStrip" unique_id=972506873]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -26.0
-offset_right = 75.0
-offset_bottom = -8.0
+offset_left = 102.0
+offset_top = 25.0
+offset_right = 153.0
+offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("23_3g73l")
 theme_override_font_sizes/font_size = 13
 text = "⚡ 3/3"
 
 [node name="EndTurnButton" type="Button" parent="HUD/HUDRoot/BottomStrip" unique_id=1951726387]
 layout_mode = 0
-offset_left = 503.0
-offset_top = -5.0
-offset_right = 629.0
-offset_bottom = 36.0
+offset_left = 505.0
+offset_top = 26.0
+offset_right = 631.0
+offset_bottom = 67.0
 theme_override_fonts/font = ExtResource("23_3g73l")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxTexture_0j1of")
 text = "END TURN"
-metadata/_edit_lock_ = true
 
 [node name="DeckPile" type="Control" parent="HUD/HUDRoot/BottomStrip" unique_id=1248537225]
 anchors_preset = 0
-offset_left = 9.0
-offset_top = -1.0
-offset_right = 66.0
-offset_bottom = 89.0
+offset_left = 25.0
+offset_top = 32.0
+offset_right = 83.0
+offset_bottom = 121.0
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="HUD/HUDRoot/BottomStrip/DeckPile" unique_id=531055400]
@@ -604,10 +572,10 @@ expand_mode = 1
 
 [node name="DiscardPile" type="Control" parent="HUD/HUDRoot/BottomStrip" unique_id=1235901548]
 anchors_preset = 0
-offset_left = 503.0
-offset_top = 36.0
-offset_right = 578.0
-offset_bottom = 90.0
+offset_left = 517.0
+offset_top = 75.0
+offset_right = 562.0
+offset_bottom = 115.0
 mouse_filter = 2
 
 [node name="DiscardImage" type="TextureRect" parent="HUD/HUDRoot/BottomStrip/DiscardPile" unique_id=901282493]
@@ -630,12 +598,11 @@ expand_mode = 1
 
 [node name="HandContainer" type="Control" parent="HUD/HUDRoot/BottomStrip" unique_id=450385272]
 anchors_preset = 0
-offset_left = 210.0
-offset_top = -11.0
-offset_right = 375.0
-offset_bottom = 84.0
+offset_left = 104.0
+offset_top = 27.0
+offset_right = 497.0
+offset_bottom = 122.0
 mouse_filter = 2
-metadata/_edit_lock_ = true
 
 [node name="ResultPanel" type="Control" parent="HUD/HUDRoot" unique_id=1167600153]
 visible = false

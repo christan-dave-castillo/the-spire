@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bh3jc524w6465"]
+
+[ext_resource type="Texture2D" uid="uid://ube0encltrvk" path="res://UI_asset/card_images/Card.png" id="1_cardtex"]
+[ext_resource type="FontFile" uid="uid://cmjg4i028mrys" path="res://UI_asset/font/Silkscreen-Bold.ttf" id="2_fontbold"]
+[ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="3_fontbody"]
+[ext_resource type="Script" uid="uid://bxgm5l7mtagfl" path="res://Scripts/CardNode.gd" id="4_script"]
+
+[node name="CardNode" type="Control" unique_id=1380777881]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 70.0
+offset_bottom = 79.0
+script = ExtResource("4_script")
+
+[node name="Bg" type="NinePatchRect" parent="." unique_id=225034618]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 100.0
+texture = ExtResource("1_cardtex")
+
+[node name="TypeTint" type="ColorRect" parent="." unique_id=710435791]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 62.0
+offset_bottom = 52.0
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.5, 0.3)
+
+[node name="EnergyCost" type="Label" parent="." unique_id=1982814397]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 48.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fontbold")
+theme_override_font_sizes/font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="." unique_id=677578455]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 52.0
+offset_right = 66.0
+offset_bottom = 53.0
+mouse_filter = 2
+color = Color(0.55, 0.45, 0.3, 0.5)
+
+[node name="CardName" type="Label" parent="." unique_id=1344673123]
+clip_contents = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 64.0
+offset_right = 63.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fontbold")
+theme_override_font_sizes/font_size = 8
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=789771]
+clip_contents = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 52.0
+offset_right = 61.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fontbody")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+autowrap_mode = 2
