@@ -11,6 +11,7 @@
 script = ExtResource("1_uap0n")
 
 [node name="SettingsUi" parent="." unique_id=1738418986 instance=ExtResource("4_5w14q")]
+layer = 10
 visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=969562412]
@@ -31,7 +32,5 @@ grow_vertical = 2
 [node name="Node2D" type="Node2D" parent="." unique_id=249917766]
 
 [node name="InformationBook" parent="." unique_id=7614341 instance=ExtResource("5_acxaq")]
-visible = false
 
 [node name="ShopUI" parent="." unique_id=1536329676 instance=ExtResource("6_i7pi0")]
-visible = false

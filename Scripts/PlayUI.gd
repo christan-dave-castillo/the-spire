@@ -12,7 +12,8 @@ var hand_size_max:        int  = 4
 var breach_per_turn:      int  = 15
 var clues_revealed:       int  = 0
 var intel_cost_reduction: int  = 0
-var _animating:           bool = false
+var _animating:              bool  = false
+var _alert_panel_target_x:  float = 0.0
 
 # ── Threat / Alert state ──────────────────────────────────────────────────────
 var current_threat:      Dictionary    = {}
@@ -47,14 +48,28 @@ var _hand_w:   float   = 0.0           # hand container width
 @onready var deck_pile:           Control = $HUD/HUDRoot/BottomStrip/DeckPile
 @onready var disc_pile:           Control = $HUD/HUDRoot/BottomStrip/DiscardPile
 
+@onready var top_bar:             Control = $HUD/HUDRoot/TopBar
+@onready var bottom_strip:        Control = $HUD/HUDRoot/BottomStrip
 @onready var alert_panel_control: Control = $HUD/HUDRoot/AlertPanel
 @onready var threat_name_label:   Label   = $HUD/HUDRoot/AlertPanel/ThreatNameLabel
 @onready var clue_count_label:    Label   = $HUD/HUDRoot/AlertPanel/ClueCountLabel
 
-@onready var result_panel:        Control = $HUD/HUDRoot/ResultPanel
-@onready var result_label:        Label   = $HUD/HUDRoot/ResultPanel/ResultLabel
-@onready var sub_label:           Label   = $HUD/HUDRoot/ResultPanel/SubLabel
-@onready var return_btn:          Button  = $HUD/HUDRoot/ResultPanel/ReturnButton
+@onready var result_panel:        Control       = $HUD/HUDRoot/ResultPanel
+@onready var result_label:        Label         = $HUD/HUDRoot/ResultPanel/ResultLabel
+@onready var sub_label:           Label         = $HUD/HUDRoot/ResultPanel/SubLabel
+@onready var return_btn:          Button        = $HUD/HUDRoot/ResultPanel/ReturnButton
+@onready var shop_btn:            Button        = $HUD/HUDRoot/ResultPanel/ShopButton
+@onready var next_day_btn:        Button        = $HUD/HUDRoot/ResultPanel/NextDayButton
+@onready var threat_reveal_lbl:   Label         = $HUD/HUDRoot/ResultPanel/ThreatRevealLabel
+
+@onready var settings_btn:        TextureButton = $SettingsButton
+@onready var edit_deck_btn_hud:   TextureButton = $EditDeckButton
+@onready var infobook_btn:        TextureButton = $InfobookButton
+
+@onready var hud_layer:           CanvasLayer   = $HUD
+@onready var story_intro                        = $StoryIntro
+
+const TUTORIAL_SCENE := preload("res://Scenes/Tutorial.tscn")
 
 # Clue arrays — populated in _setup_hud() by finding children by name
 var alert_clue_labels:       Array[Label]     = []
@@ -114,7 +129,111 @@ func _ready() -> void:
 	deck_manager = DeckManager.new()
 	deck_manager.initialize(_build_deck())
 	_setup_hud()
-	_start_turn()
+	_start_turn()          # draw first hand; it will be visible once HUD is revealed
+
+	var day := GameManager.current_day
+	if day <= 2:           # Days 1–3 get a story intro
+		# Hide HUD and overlay buttons while the story intro plays
+		hud_layer.visible             = false
+		if settings_btn:      settings_btn.visible      = false
+		if infobook_btn:      infobook_btn.visible      = false
+		if edit_deck_btn_hud: edit_deck_btn_hud.visible = false
+		story_intro.show_intro(day + 1)
+		story_intro.intro_finished.connect(_on_intro_finished, CONNECT_ONE_SHOT)
+	else:
+		_animate_alert_panel_in()    # no intro for this day — slide panel in immediately
+
+func _on_intro_finished() -> void:
+	# Restore HUD and overlay buttons, then slide the alert panel in
+	hud_layer.visible = true
+	if settings_btn:      settings_btn.visible      = true
+	if infobook_btn:      infobook_btn.visible      = true
+	if edit_deck_btn_hud: edit_deck_btn_hud.visible = true
+	_animate_alert_panel_in()
+
+	if GameManager.current_day == 0:   # Day 1 only gets the tutorial
+		_start_tutorial()
+
+# ── Tutorial ──────────────────────────────────────────────────────────────────
+
+func _start_tutorial() -> void:
+	var tut := TUTORIAL_SCENE.instantiate() as Tutorial
+	add_child(tut)
+	tut.tutorial_finished.connect(func(): tut.queue_free())
+
+	# Build steps using screen-space rects from each node.
+	# Alert panel: animation is in-flight so position.x is still 640 — use the stored target X.
+	var _ap_rect := alert_panel_control.get_global_rect()
+	_ap_rect.position.x = _alert_panel_target_x
+
+	var steps: Array[Dictionary] = [
+		{
+			"header": "THREAT ALERT PANEL",
+			"body":   "Incoming SIEM alerts about the active threat. Investigate cards reveal clues.",
+			"rect":   _ap_rect,
+		},
+		{
+			"header": "INTEGRITY",
+			"body":   "Your system health. Hits 0 = game over. Recovery cards restore it.",
+			"rect":   integrity_bar.get_global_rect(),
+		},
+		{
+			"header": "CONTAINMENT",
+			"body":   "Fill this to 100% to neutralise the threat. Response cards are your main tool.",
+			"rect":   containment_bar.get_global_rect(),
+		},
+		{
+			"header": "BREACH METER",
+			"body":   "Rises every End Turn. If it maxes out, Integrity takes damage. Hardening cards slow it.",
+			"rect":   breach_bar.get_global_rect(),
+		},
+		{
+			"header": "YOUR HAND",
+			"body":   "Click a card to play it. Investigation reveals clues. Response contains threats.",
+			"rect":   hand_container.get_global_rect(),
+		},
+		{
+			"header": "ENERGY",
+			"body":   "You start each turn with 3 energy. Cards cost 1–4. Grey cards are unaffordable this turn.",
+			"rect":   energy_label.get_global_rect(),
+		},
+		{
+			"header": "DECK PILE",
+			"body":   "Your unplayed cards. When empty, the discard reshuffles automatically.",
+			"rect":   deck_pile.get_global_rect(),
+		},
+		{
+			"header": "DISCARD PILE",
+			"body":   "Played cards land here and return to your deck next shuffle.",
+			"rect":   disc_pile.get_global_rect(),
+		},
+		{
+			"header": "END TURN",
+			"body":   "Press when done. Breach rises, a new alert appears, and you draw fresh cards.",
+			"rect":   end_turn_btn.get_global_rect(),
+		},
+		{
+			"header": "INFORMATION BOOK",
+			"body":   "Click to browse every card type and known threat in the intel codex. Essential for planning your deck.",
+			"rect":   infobook_btn.get_global_rect() if infobook_btn else Rect2(),
+		},
+		{
+			"header": "DECK EDITOR",
+			"body":   "Click to manage your card loadout between runs. Swap cards to counter specific threat types.",
+			"rect":   edit_deck_btn_hud.get_global_rect() if edit_deck_btn_hud else Rect2(),
+		},
+		{
+			"header": "SETTINGS",
+			"body":   "Audio and display options — available at any time during play.",
+			"rect":   settings_btn.get_global_rect() if settings_btn else Rect2(),
+		},
+		{
+			"header": "YOU'RE READY, ANALYST",
+			"body":   "Investigate to find clues, identify the threat, then contain and recover. Good luck — this one is already inside the network.",
+			"rect":   Rect2(),     # no highlight on final step
+		},
+	]
+	tut.start(steps)
 
 # ── Threat CSV loading ────────────────────────────────────────────────────────
 
@@ -151,21 +270,37 @@ func _load_current_threat() -> void:
 
 # ── Deck building ─────────────────────────────────────────────────────────────
 
+const DECK_SAVE_PATH := "user://deck.cfg"
+
 func _build_deck() -> Array[Dictionary]:
+	# 1. Runtime deck (set by EditDeck.save or ShopUI purchases this session)
 	var saved = GlobalVars.get("player_deck")
 	if saved is Array and not (saved as Array).is_empty():
 		return (saved as Array).duplicate(true)
+
+	# 2. Disk save (persists across restarts — written by EditDeck._on_save)
+	var cfg := ConfigFile.new()
+	if cfg.load(DECK_SAVE_PATH) == OK:
+		var disk: Variant = cfg.get_value("deck", "cards", null)
+		if disk is Array and not (disk as Array).is_empty():
+			return (disk as Array).duplicate(true)
+
+	# 3. Fallback: build starter deck from ShopUI card list
 	var shop = GlobalVars.get("shop_ui")
 	if shop != null:
-		var _raw = shop.get("ALL_CARDS")
-		var src: Array = _raw if _raw is Array else []
+		var raw: Variant = shop.get("ALL_CARDS")
+		if raw == null:
+			var scr := (shop as Object).get_script() as GDScript
+			if scr: raw = scr.get_script_constant_map().get("ALL_CARDS", null)
+		var src: Array = raw if raw is Array else []
 		if not src.is_empty():
 			var id_map: Dictionary = {}
-			for c in src: id_map[c["id"]] = c
+			for c in src: id_map[c.get("id", "")] = c
 			var result: Array[Dictionary] = []
 			for id in STARTER_IDS:
-				if id_map.has(id): result.append(id_map[id].duplicate())
+				if id_map.has(id): result.append((id_map[id] as Dictionary).duplicate())
 			if not result.is_empty(): return result
+
 	return STARTER_CARDS.duplicate(true)
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -193,18 +328,45 @@ func _setup_hud() -> void:
 	# Wire up buttons
 	end_turn_btn.pressed.connect(_on_end_turn_pressed)
 	return_btn.pressed.connect(_on_return_to_menu)
+	shop_btn.pressed.connect(_on_shop_pressed)
+	next_day_btn.pressed.connect(_on_next_day_pressed)
+	if settings_btn:
+		settings_btn.pressed.connect(func(): GlobalVars.settings_ui.visible = true)
+	if infobook_btn:
+		infobook_btn.pressed.connect(func(): GlobalVars.info_book.visible = true)
+	if edit_deck_btn_hud:
+		edit_deck_btn_hud.pressed.connect(_on_edit_deck_pressed)
 
 	# Set initial bar values
 	integrity_bar.value   = integrity
 	containment_bar.value = containment
 	breach_bar.value      = breach
 
-	# Slide alert panel in from off-screen right
-	var final_x := alert_panel_control.position.x
+	# Containment bar — static blue fill + dark track
+	var cont_fill := StyleBoxFlat.new()
+	cont_fill.bg_color = Color(0.15, 0.72, 1.0)
+	cont_fill.set_corner_radius_all(3)
+	containment_bar.add_theme_stylebox_override("fill", cont_fill)
+
+	var bar_bg := StyleBoxFlat.new()
+	bar_bg.bg_color = Color(0.05, 0.07, 0.13)
+	bar_bg.set_corner_radius_all(3)
+	containment_bar.add_theme_stylebox_override("background", bar_bg)
+
+	# Breach bar — dynamic fill set each frame in _update_hud(); only dark track here
+	var breach_bg := StyleBoxFlat.new()
+	breach_bg.bg_color = Color(0.05, 0.07, 0.13)
+	breach_bg.set_corner_radius_all(3)
+	breach_bar.add_theme_stylebox_override("background", breach_bg)
+
+	# Park the alert panel off-screen; _animate_alert_panel_in() fires it after intro or immediately
+	_alert_panel_target_x          = alert_panel_control.position.x
 	alert_panel_control.position.x = 640.0
 	alert_panel_control.modulate.a = 0.0
+
+func _animate_alert_panel_in() -> void:
 	var tw := create_tween().set_parallel(true)
-	tw.tween_property(alert_panel_control, "position:x", final_x, 0.45) \
+	tw.tween_property(alert_panel_control, "position:x", _alert_panel_target_x, 0.45) \
 			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	tw.tween_property(alert_panel_control, "modulate:a", 1.0, 0.35)
 
@@ -449,22 +611,129 @@ func _check_win_loss() -> void:
 
 func _show_result(won: bool) -> void:
 	end_turn_btn.disabled = true
-	result_panel.visible  = true
+	# Hide gameplay elements so the result panel's dark overlay stands alone
+	top_bar.visible             = false
+	alert_panel_control.visible = false
+	bottom_strip.visible        = false
+	result_panel.visible        = true
+
+	var threat_name := str(current_threat.get("threat_type", "Unknown Threat"))
+	var next_day    := GameManager.current_day + 1
+
 	if won:
 		result_label.text = "THREAT NEUTRALISED"
 		result_label.add_theme_color_override("font_color", Color(0.3, 1.0, 0.5))
 		sub_label.text    = "Incident contained. System secure."
 		GameManager.complete_day(GameManager.current_day)
+		# Show Next Day button only when there's a next day available
+		next_day_btn.visible = next_day < 6
+		# Reveal what the threat actually was
+		threat_reveal_lbl.visible = true
+		threat_reveal_lbl.text    = "Threat identified: %s" % threat_name.to_upper()
 	else:
 		result_label.text = "SYSTEM COMPROMISED"
 		result_label.add_theme_color_override("font_color", Color(1.0, 0.30, 0.30))
 		sub_label.text    = "Breach exceeded critical threshold."
+		next_day_btn.visible      = false
+		threat_reveal_lbl.visible = true
+		threat_reveal_lbl.text    = "The threat was: %s" % threat_name.to_upper()
 
 func _on_return_to_menu() -> void:
 	if GlobalVars.game_controller:
 		GlobalVars.game_controller.change_sub_scene(GameController.STAGE_SELECT)
 	else:
 		get_tree().change_scene_to_file("res://Scenes/stage_select.tscn")
+
+func _on_shop_pressed() -> void:
+	if not GlobalVars.shop_ui:
+		return
+	# Hide the HUD while the shop is open so there's no overlap
+	hud_layer.visible = false
+	GlobalVars.shop_ui.open_shop()
+	# Restore the result screen (game elements stay hidden) when shop closes
+	if not GlobalVars.shop_ui.shop_closed.is_connected(_on_shop_closed):
+		GlobalVars.shop_ui.shop_closed.connect(_on_shop_closed, CONNECT_ONE_SHOT)
+
+func _on_shop_closed() -> void:
+	# Bring back the HUD — game elements are still hidden, only result panel shows
+	hud_layer.visible           = true
+	top_bar.visible             = false
+	alert_panel_control.visible = false
+	bottom_strip.visible        = false
+
+func _on_next_day_pressed() -> void:
+	var next_day := GameManager.current_day + 1
+	if next_day < 6:
+		GameManager.current_day = next_day
+		if GlobalVars.game_controller:
+			GlobalVars.game_controller.change_sub_scene(GameController.PLAY_UI)
+
+func _on_edit_deck_pressed() -> void:
+	_show_deck_viewer()
+
+## Read-only deck viewer — shows all cards currently in the deck (hand + draw + discard)
+## as a full-screen overlay.  No navigation away from the game.
+func _show_deck_viewer() -> void:
+	# All cards wherever they are in the deck cycle
+	var full_deck: Array = deck_manager.deck + deck_manager.hand + deck_manager.discard
+
+	# ── CanvasLayer so it renders above HUD ──────────────────────────────────
+	var layer := CanvasLayer.new()
+	layer.layer = 20
+	add_child(layer)
+
+	# Full-screen click-blocking dim
+	var dim := ColorRect.new()
+	dim.color       = Color(0.0, 0.02, 0.07, 0.95)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(dim)
+
+	# Root control for content
+	var root := Control.new()
+	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(root)
+
+	# Title bar
+	var title := Label.new()
+	title.text                  = "CURRENT DECK  —  %d CARDS" % full_deck.size()
+	title.horizontal_alignment  = HORIZONTAL_ALIGNMENT_CENTER
+	title.position              = Vector2(0, 6)
+	title.size                  = Vector2(640, 18)
+	title.add_theme_color_override("font_color", Color(0.55, 0.85, 1.0))
+	title.add_theme_font_size_override("font_size", 10)
+	root.add_child(title)
+
+	# Scroll container for the card grid
+	var scroll := ScrollContainer.new()
+	scroll.position = Vector2(16, 30)
+	scroll.size     = Vector2(608, 288)
+	root.add_child(scroll)
+
+	# 5-column grid — readable at 70 × 79 card size
+	var grid := GridContainer.new()
+	grid.columns = 5
+	grid.add_theme_constant_override("h_separation", 6)
+	grid.add_theme_constant_override("v_separation", 22)
+	scroll.add_child(grid)
+
+	for card_data in full_deck:
+		var card_node := CARD_SCENE.instantiate() as CardNode
+		# Set minimum size so GridContainer sizes cells correctly
+		card_node.custom_minimum_size = Vector2(_card_w, _card_h)
+		grid.add_child(card_node)   # add_child before setup (triggers _ready / @onready)
+		card_node.setup(card_data)
+		card_node.set_playable(true)   # full colour, no grey-out
+		# No card_played connection → clicking does nothing (read-only)
+
+	# Close button
+	var close_btn := Button.new()
+	close_btn.text     = "✕  CLOSE"
+	close_btn.position = Vector2(265, 325)
+	close_btn.size     = Vector2(110, 22)
+	close_btn.add_theme_font_size_override("font_size", 8)
+	close_btn.pressed.connect(layer.queue_free)
+	root.add_child(close_btn)
 
 # ── HUD refresh ───────────────────────────────────────────────────────────────
 
@@ -478,8 +747,17 @@ func _update_hud() -> void:
 		fill.set_corner_radius_all(3)
 		integrity_bar.add_theme_stylebox_override("fill", fill)
 
-	if containment_bar:     containment_bar.value    = containment
-	if breach_bar:          breach_bar.value         = breach
+	if containment_bar:
+		containment_bar.value = containment
+
+	if breach_bar:
+		breach_bar.value = breach
+		# Fill interpolates yellow → orange → red as breach rises
+		var bt     := float(breach) / 100.0
+		var bfill  := StyleBoxFlat.new()
+		bfill.bg_color = Color(1.0, 0.75 - bt * 0.55, 0.12 - bt * 0.10)
+		bfill.set_corner_radius_all(3)
+		breach_bar.add_theme_stylebox_override("fill", bfill)
 	if energy_label:        energy_label.text        = "⚡ %d/%d" % [energy, max_energy]
 	for child in hand_container.get_children():
 		if child is CardNode:

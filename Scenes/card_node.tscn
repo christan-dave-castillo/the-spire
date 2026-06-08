@@ -50,15 +50,14 @@ mouse_filter = 2
 color = Color(0.55, 0.45, 0.3, 0.5)
 
 [node name="CardName" type="Label" parent="." unique_id=1344673123]
-clip_contents = true
 layout_mode = 0
-offset_left = 7.0
-offset_top = 64.0
-offset_right = 63.0
-offset_bottom = 94.0
+offset_left = 8.0
+offset_top = 63.0
+offset_right = 65.0
+offset_bottom = 97.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_fontbold")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_fontbody")
+theme_override_font_sizes/font_size = 15
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="." unique_id=789771]

@@ -334,6 +334,7 @@ offset_top = 30.0
 offset_right = 97.0
 offset_bottom = 51.0
 theme_override_fonts/font = ExtResource("23_3g73l")
+theme_override_font_sizes/font_size = 9
 text = "ALERTS"
 metadata/_edit_lock_ = true
 
@@ -630,9 +631,9 @@ expand_mode = 1
 
 [node name="HandContainer" type="Control" parent="HUD/HUDRoot/BottomStrip" unique_id=450385272]
 anchors_preset = 0
-offset_left = 210.0
+offset_left = 116.0
 offset_top = -11.0
-offset_right = 375.0
+offset_right = 448.0
 offset_bottom = 84.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
@@ -653,33 +654,68 @@ color = Color(0, 0, 0, 0.7)
 [node name="ResultBg" type="ColorRect" parent="HUD/HUDRoot/ResultPanel" unique_id=576983663]
 layout_mode = 0
 offset_left = 180.0
-offset_top = 125.0
+offset_top = 118.0
 offset_right = 460.0
-offset_bottom = 235.0
+offset_bottom = 248.0
 mouse_filter = 2
 color = Color(0.08, 0.06, 0.1, 1)
 
 [node name="ResultLabel" type="Label" parent="HUD/HUDRoot/ResultPanel" unique_id=734772390]
 layout_mode = 0
-offset_left = 180.0
-offset_top = 137.0
-offset_right = 460.0
-offset_bottom = 165.0
+offset_left = 183.0
+offset_top = 128.0
+offset_right = 458.0
+offset_bottom = 158.0
 text = "RESULT"
 horizontal_alignment = 1
 
 [node name="SubLabel" type="Label" parent="HUD/HUDRoot/ResultPanel" unique_id=234147026]
 layout_mode = 0
-offset_left = 180.0
-offset_top = 169.0
-offset_right = 460.0
-offset_bottom = 187.0
+offset_left = 183.0
+offset_top = 160.0
+offset_right = 458.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 9
 horizontal_alignment = 1
 
 [node name="ReturnButton" type="Button" parent="HUD/HUDRoot/ResultPanel" unique_id=318742697]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 197.0
-offset_right = 400.0
-offset_bottom = 219.0
-text = "RETURN TO MENU"
+offset_left = 183.0
+offset_top = 185.0
+offset_right = 277.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 8
+text = "MENU"
+
+[node name="ShopButton" type="Button" parent="HUD/HUDRoot/ResultPanel" unique_id=1944466960]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 185.0
+offset_right = 362.0
+offset_bottom = 205.0
+theme_override_colors/font_color = Color(0.35, 0.85, 0.45, 1)
+theme_override_font_sizes/font_size = 8
+text = "SHOP"
+
+[node name="NextDayButton" type="Button" parent="HUD/HUDRoot/ResultPanel" unique_id=577516076]
+visible = false
+layout_mode = 0
+offset_left = 366.0
+offset_top = 185.0
+offset_right = 458.0
+offset_bottom = 205.0
+theme_override_colors/font_color = Color(0.4, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "NEXT DAY ▶"
+
+[node name="ThreatRevealLabel" type="Label" parent="HUD/HUDRoot/ResultPanel" unique_id=739362303]
+visible = false
+layout_mode = 0
+offset_left = 183.0
+offset_top = 209.0
+offset_right = 458.0
+offset_bottom = 245.0
+theme_override_colors/font_color = Color(0.7, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+autowrap_mode = 2

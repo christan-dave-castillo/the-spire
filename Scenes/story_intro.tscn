@@ -56,6 +56,7 @@ size_flags_vertical = 0
 [node name="DialogueText" type="RichTextLabel" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer" unique_id=275375100]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DialogueUI/DialogueBox/MarginContainer/VBoxContainer" unique_id=821854425]

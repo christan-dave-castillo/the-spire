@@ -1,0 +1,255 @@
+[gd_scene format=3 uid="uid://ceditdecksc01"]
+
+[ext_resource type="Script" uid="uid://bm0udqjvmspvb" path="res://Scripts/EditDeck.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://cmjg4i028mrys" path="res://UI_asset/font/Silkscreen-Bold.ttf" id="2_bold"]
+
+[node name="EditDeck" type="Control" unique_id=654512306]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Bg" type="ColorRect" parent="." unique_id=1949702639]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.06, 0.07, 0.12, 1)
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=232832938]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="HBoxContainer" parent="Layout" unique_id=1581768563]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BackButton" type="Button" parent="Layout/TopBar" unique_id=2031372959]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "◀ BACK"
+
+[node name="TitleLabel" type="Label" parent="Layout/TopBar" unique_id=649573800]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 9
+text = "DECK EDITOR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeckNameEdit" type="LineEdit" parent="Layout/TopBar" unique_id=190423278]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+placeholder_text = "Deck name..."
+
+[node name="SplitView" type="HBoxContainer" parent="Layout" unique_id=1262742157]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
+[node name="LibrarySection" type="VBoxContainer" parent="Layout/SplitView" unique_id=785004620]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="LibraryHeader" type="Label" parent="Layout/SplitView/LibrarySection" unique_id=555545227]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 8
+text = "CARD LIBRARY"
+
+[node name="SearchBar" type="LineEdit" parent="Layout/SplitView/LibrarySection" unique_id=1612076608]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+placeholder_text = "Search..."
+
+[node name="FilterRow" type="HBoxContainer" parent="Layout/SplitView/LibrarySection" unique_id=461188851]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FilterAll" type="Button" parent="Layout/SplitView/LibrarySection/FilterRow" unique_id=1714966430]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 7
+toggle_mode = true
+button_pressed = true
+text = "All"
+
+[node name="FilterInv" type="Button" parent="Layout/SplitView/LibrarySection/FilterRow" unique_id=262382072]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 7
+toggle_mode = true
+text = "Inv"
+
+[node name="FilterMon" type="Button" parent="Layout/SplitView/LibrarySection/FilterRow" unique_id=1219099145]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 7
+toggle_mode = true
+text = "Mon"
+
+[node name="FilterHard" type="Button" parent="Layout/SplitView/LibrarySection/FilterRow" unique_id=1420042307]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 7
+toggle_mode = true
+text = "Hard"
+
+[node name="FilterResp" type="Button" parent="Layout/SplitView/LibrarySection/FilterRow" unique_id=977717055]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 7
+toggle_mode = true
+text = "Resp"
+
+[node name="FilterRec" type="Button" parent="Layout/SplitView/LibrarySection/FilterRow" unique_id=121313041]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 7
+toggle_mode = true
+text = "Rec"
+
+[node name="FilterAuto" type="Button" parent="Layout/SplitView/LibrarySection/FilterRow" unique_id=1727177143]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 7
+toggle_mode = true
+text = "Auto"
+
+[node name="FilterRare" type="Button" parent="Layout/SplitView/LibrarySection/FilterRow" unique_id=1842429016]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 7
+toggle_mode = true
+text = "Rare"
+
+[node name="LibraryScroll" type="ScrollContainer" parent="Layout/SplitView/LibrarySection" unique_id=534448231]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="LibraryGrid" type="GridContainer" parent="Layout/SplitView/LibrarySection/LibraryScroll" unique_id=1864760954]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="PreviewPanel" type="VBoxContainer" parent="Layout/SplitView/LibrarySection" unique_id=62193111]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="PreviewDivider" type="ColorRect" parent="Layout/SplitView/LibrarySection/PreviewPanel" unique_id=1155810566]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.3, 0.35, 0.42, 1)
+
+[node name="PreviewHeader" type="HBoxContainer" parent="Layout/SplitView/LibrarySection/PreviewPanel" unique_id=1396563395]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PreviewName" type="Label" parent="Layout/SplitView/LibrarySection/PreviewPanel/PreviewHeader" unique_id=30072773]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 9
+
+[node name="PreviewType" type="Label" parent="Layout/SplitView/LibrarySection/PreviewPanel/PreviewHeader" unique_id=189583103]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 7
+
+[node name="PreviewEnergy" type="Label" parent="Layout/SplitView/LibrarySection/PreviewPanel/PreviewHeader" unique_id=1442426522]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.2, 1)
+theme_override_font_sizes/font_size = 7
+
+[node name="PreviewTooltip" type="Label" parent="Layout/SplitView/LibrarySection/PreviewPanel" unique_id=788319897]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.78, 0.82, 0.88, 1)
+theme_override_font_sizes/font_size = 7
+autowrap_mode = 2
+
+[node name="DeckSection" type="VBoxContainer" parent="Layout/SplitView" unique_id=1168410125]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="DeckHeader" type="HBoxContainer" parent="Layout/SplitView/DeckSection" unique_id=770572111]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="DeckTitleLabel" type="Label" parent="Layout/SplitView/DeckSection/DeckHeader" unique_id=512366888]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 8
+text = "YOUR DECK"
+
+[node name="DeckCountLabel" type="Label" parent="Layout/SplitView/DeckSection/DeckHeader" unique_id=1605839735]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.65, 0.65, 1)
+theme_override_font_sizes/font_size = 8
+text = "0 / 10"
+
+[node name="DeckScroll" type="ScrollContainer" parent="Layout/SplitView/DeckSection" unique_id=702248693]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="DeckList" type="VBoxContainer" parent="Layout/SplitView/DeckSection/DeckScroll" unique_id=972821496]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="DeckFooter" type="HBoxContainer" parent="Layout/SplitView/DeckSection" unique_id=1262502018]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SaveButton" type="Button" parent="Layout/SplitView/DeckSection/DeckFooter" unique_id=2075471612]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 8
+text = "SAVE"
+
+[node name="ClearButton" type="Button" parent="Layout/SplitView/DeckSection/DeckFooter" unique_id=872379006]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 8
+text = "CLEAR"

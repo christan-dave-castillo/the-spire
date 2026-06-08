@@ -27,8 +27,9 @@ func connect_stage_select(stage_select_node: Control) -> void:
 
 
 func _on_stage_selected(day_index: int) -> void:
+	# Scene navigation is handled by GameController via the stage_selected signal.
+	# GameController sets current_day and calls change_sub_scene(PLAY_UI).
 	current_day = day_index
-	get_tree().change_scene_to_file(STAGE_SCENES[day_index])
 
 
 func complete_day(day_index: int) -> void:

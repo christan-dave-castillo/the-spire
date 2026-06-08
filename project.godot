@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Music="*uid://bsudwd36333fo"
 GameManager="*uid://1kw5qkelamfl"
-GlobalVars="*uid://d1jh8g3hv3yp7"
+GlobalVars="*res://Scripts/Autoloader/GlobalVars.gd"
 SceneLoader="*uid://c4lfsm54reesq"
 
 [display]

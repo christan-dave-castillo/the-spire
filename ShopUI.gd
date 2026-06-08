@@ -8,7 +8,7 @@ signal shop_closed
 @onready var cards_container: GridContainer = $ShopPanel/MarginContainer/VBoxContainer/ScrollContainer/CardsGrid
 @onready var coins_label: Label = $ShopPanel/MarginContainer/VBoxContainer/Header/CoinsLabel
 
-const CARD_TEXTURE = preload("res://UI_asset/images/Card.png")
+const CARD_TEXTURE = preload("res://UI_asset/card_images/Card.png")
 
 const CARD_W = 96
 const CARD_H = 144

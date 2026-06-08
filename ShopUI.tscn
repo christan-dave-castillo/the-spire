@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dep7tekr3jlwf" path="res://Ui asset/icons_set/icons_128/cross.png" id="3_smgkq"]
 
 [node name="ShopUI" type="CanvasLayer" unique_id=1536329676]
+visible = false
 script = ExtResource("1")
 
 [node name="ShopPanel" type="PanelContainer" parent="." unique_id=1869531187]

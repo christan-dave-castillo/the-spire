@@ -1,0 +1,94 @@
+[gd_scene format=4 uid="uid://tutorial_scene01"]
+
+[ext_resource type="Script" path="res://Scripts/Tutorial.gd" id="1_tutscr"]
+[ext_resource type="FontFile" uid="uid://cmjg4i028mrys" path="res://UI_asset/font/Silkscreen-Bold.ttf" id="2_bold"]
+[ext_resource type="FontFile" uid="uid://bh84t5jx2y6nd" path="res://UI_asset/font/m3x6.ttf" id="3_body"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tip"]
+bg_color = Color(0.06, 0.07, 0.14, 0.97)
+border_color = Color(0.2, 0.55, 0.85, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+
+[node name="Tutorial" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_tutscr")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.62)
+
+[node name="Highlight" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TooltipBox" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 175.0
+offset_bottom = 110.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tip")
+
+[node name="VBox" type="VBoxContainer" parent="TooltipBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="StepLabel" type="Label" parent="TooltipBox/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.55, 0.7, 1)
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 7
+text = "1 / 10"
+
+[node name="HeaderLabel" type="Label" parent="TooltipBox/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 9
+text = "HEADER"
+
+[node name="Divider" type="ColorRect" parent="TooltipBox/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+mouse_filter = 2
+color = Color(0.25, 0.35, 0.5, 1)
+
+[node name="BodyLabel" type="Label" parent="TooltipBox/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(159, 0)
+theme_override_colors/font_color = Color(0.82, 0.86, 0.92, 1)
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 8
+autowrap_mode = 2
+text = "Body text here."
+
+[node name="Buttons" type="HBoxContainer" parent="TooltipBox/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NextButton" type="Button" parent="TooltipBox/VBox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 7
+text = "NEXT ▶"
+
+[node name="SkipButton" type="Button" parent="TooltipBox/VBox/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+theme_override_colors/font_color = Color(0.5, 0.5, 0.55, 1)
+text = "SKIP"

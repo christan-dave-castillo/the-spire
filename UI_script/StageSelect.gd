@@ -2,6 +2,7 @@ extends Control
 
 signal stage_selected(day_index: int)
 signal back_to_main_menu
+signal open_edit_deck
 
 const STAGES = [
 	{ "label": "Day 1", "sub": "The journey begins",         "locked": false },
@@ -21,18 +22,19 @@ var current_index: int = 0
 @onready var center_card    = $VBoxContainer/CarouselContainer/CardViewport/CenterCard
 @onready var next_card      = $VBoxContainer/CarouselContainer/CardViewport/NextCard
 @onready var dots_container = $VBoxContainer/DotsContainer
-@onready var back_button    = $BackButton
+@onready var back_button      = $BackButton
+@onready var edit_deck_button = $VBoxContainer/BottomButtons/EditDecksButton
 
 
 func _ready() -> void:
 	_build_dots()
 	_update_carousel()
 
-
 	prev_button.pressed.connect(_on_prev_pressed)
 	next_button.pressed.connect(_on_next_pressed)
 	# CenterCard is a Button so use .pressed instead of gui_input
 	center_card.pressed.connect(_on_center_card_pressed)
+	edit_deck_button.pressed.connect(func(): open_edit_deck.emit())
 
 
 # ── Navigation ────────────────────────────────────────────────────────────────
